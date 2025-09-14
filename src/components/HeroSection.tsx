@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/1.jpg";
 
 const HeroSection = () => {
@@ -32,11 +33,11 @@ const HeroSection = () => {
           Entertainment, Hospitality & Corporate events.
         </p>
         
-            <a href="/solutions">
-              <Button variant="lime" size="lg" className="text-lg px-8 py-2 h-auto rounded-xl ">
-                DISCOVER SOLUTIONS
-              </Button>
-            </a>
+        <Link to="/solutions">
+          <Button variant="lime" size="lg" className="text-lg px-8 py-2 h-auto rounded-xl ">
+            DISCOVER SOLUTIONS
+          </Button>
+        </Link>
       </div>
       
       {/* Animated Elements */}
