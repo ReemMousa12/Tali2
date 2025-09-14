@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import amr1 from "@/assets/artists/amrdiab/amr3.jpg";
 import myriam from "@/assets/artists/Myriamfares/myriam.jpg";
 import pawsa from "@/assets/artists/pawsa/pawsa1.jpg";
@@ -234,13 +235,13 @@ const EventsSection = () => {
           </div>
           {/* Explore More Button */}
           <div className="flex justify-center mt-12 pt-4 ">
-            <a
-              href="/events"
+            <Link
+              to="/events"
               className="inline-block bg-tali-lime text-[#371990] font-bold pt-2 px-14 py-3 rounded-full shadow-lg hover:bg-[#d4ff3f] transition-colors duration-200 text-lg"
               style={{ minWidth: '220px', textAlign: 'center' }}
             >
               Explore More Events
-            </a>
+            </Link>
           </div>
         </div>
       </div>
