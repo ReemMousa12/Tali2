@@ -1,13 +1,14 @@
 import logo from "../assets/logo/logo_colored.png";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import subheaderBg from "../assets/backgrounds/subheader.jpg";
 
 const Footer = () => {
   return (
     <footer
       className="py-16 px-4 border-t border-white/10 relative overflow-hidden"
       style={{
-        backgroundImage: `url('/src/assets/background/subheader.jpg')`,
+        backgroundImage: `url(${subheaderBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
