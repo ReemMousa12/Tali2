@@ -1,7 +1,7 @@
 import logo from "../assets/logo/logo_colored.png";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import subheaderBg from "../assets/backgrounds/subheader.jpg";
+import subheaderBg from "../assets/background/subheader.jpg";
 
 const Footer = () => {
   return (
