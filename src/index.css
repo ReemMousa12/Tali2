@@ -1,0 +1,147 @@
+/* Custom global scrollbar styles */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 12px;
+  background: #371990;
+}
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cdff6b 30%, #371990 100%);
+  border-radius: 8px;
+}
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+  background: #cdff6b;
+}
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: #cdff6b #2a185a;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system - Tali Experience Theme */
+
+@layer base {
+  :root {
+    /* Core colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 100%;
+
+    --card: 263 84% 24%;
+    --card-foreground: 0 0% 100%;
+
+    /* Purple/Magenta gradient background */
+    --tali-purple-dark: 263 84% 24%;
+    --tali-purple-mid: 283 76% 45%;
+    --tali-purple-light: 295 60% 60%;
+    --tali-magenta: 313 73% 55%;
+    
+    /* Lime green accent color */
+    --tali-lime: 79 89% 65%;
+    --tali-lime-bright: 79 95% 70%;
+    
+    /* Text colors */
+    --tali-text-primary: 0 0% 100%;
+    --tali-text-secondary: 0 0% 85%;
+    --tali-text-muted: 0 0% 70%;
+
+    /* Primary theme colors */
+    --primary: 263 84% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 79 89% 65%;
+    --secondary-foreground: 263 84% 24%;
+
+    --accent: 79 89% 65%;
+    --accent-foreground: 263 84% 24%;
+
+    --muted: 263 40% 35%;
+    --muted-foreground: 0 0% 85%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 100% / 0.2;
+    --input: 0 0% 100% / 0.1;
+    --ring: 79 89% 65%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--tali-purple-dark)), hsl(var(--tali-purple-mid)), hsl(var(--tali-magenta)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--tali-purple-mid) / 0.8), hsl(var(--tali-magenta) / 0.6));
+    --gradient-button: linear-gradient(135deg, hsl(var(--tali-lime)), hsl(var(--tali-lime-bright)));
+    
+    /* Shadows and effects */
+    --shadow-glow: 0 20px 60px -20px hsl(var(--tali-lime) / 0.3);
+    --shadow-card: 0 10px 40px -10px hsl(var(--tali-purple-dark) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-tali-purple-dark via-tali-purple-mid to-tali-magenta text-tali-text-primary font-light;
+    background-attachment: fixed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient-lime {
+    @apply bg-gradient-to-r from-tali-lime to-tali-lime-bright bg-clip-text text-transparent;
+  }
+  
+  .hero-glow {
+    text-shadow: 0 0 30px hsl(var(--tali-lime) / 0.5);
+  }
+  
+  .card-glass {
+    @apply backdrop-blur-md border border-white/20;
+    background: linear-gradient(135deg, 
+      hsl(var(--tali-purple-mid) / 0.1), 
+      hsl(var(--tali-magenta) / 0.05)
+    );
+  }
+  
+  .btn-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .geometric-overlay {
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--tali-lime) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--tali-magenta) / 0.1) 0%, transparent 50%);
+  }
+  
+  .background-headline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: clamp(8rem, 20vw, 24rem);
+    font-weight: 900;
+    line-height: 0.8;
+    z-index: 1;
+    opacity: 0.03;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    letter-spacing: -0.05em;
+  }
+  
+  .section-content {
+    position: relative;
+    z-index: 10;
+  }
+}
