@@ -8,6 +8,13 @@ import wegz from "@/assets/artists/wegz/wegz.jpg";
 
 
 const upcomingEvents = [
+    {
+    title: "Myriam Fares at KIKI’s White",
+    date: "Sep 19 | 09:00 PM",
+    image: myriam,
+    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
+    artist: { name: 'Myriam Fares', image: myriam }
+  },
   // {
   //   title: "Wegz Live Album Launch at KIKI'S Sage",
   //   date: "Sept 18, 2025",
@@ -15,13 +22,7 @@ const upcomingEvents = [
   //   desc: "Wegz performing live at KIKI's Sage for his official album launch at 8pm.",
   //   artist: { name: 'Wegz', image: wegz }
   // },
-  {
-    title: "Myriam Fares at KIKI’s White",
-    date: "Sep 19 | 09:00 PM",
-    image: myriam,
-    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
-    artist: { name: 'Myriam Fares', image: myriam }
-  },
+
   // {
   //   title: 'Sunset Beach Party',
   //   date: 'Oct 5, 2025',
@@ -47,6 +48,13 @@ const upcomingEvents = [
 
 
 const hotEvents = [
+   {
+    title: "Myriam Fares at KIKI’s White",
+    date: "Sep 19 | 09:00 PM",
+    image: myriam,
+    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
+    artist: { name: 'Myriam Fares', image: myriam }
+  },
   {
     title: "Wegz Live Album Launch at KIKI'S Sage",
     date: "Sept 18, 2025",
@@ -54,13 +62,7 @@ const hotEvents = [
     desc: "Wegz performing live at KIKI's Sage for his official album launch at 8pm.",
     artist: { name: 'Wegz', image: wegz }
   },
-  {
-    title: "Myriam Fares at KIKI’s White",
-    date: "Sep 19 | 09:00 PM",
-    image: myriam,
-    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
-    artist: { name: 'Myriam Fares', image: myriam }
-  },
+ 
   {
     title: 'VIP Night Party',
     date: 'Sept 20, 2025',
@@ -212,7 +214,7 @@ const EventsSection = () => {
                     {event.title}
                   </h4>
                   <p className="mb-4 text-sm opacity-90 flex-1">{event.desc}</p>
-                  {event.artist.name === 'Myriam Fares' ? (
+                  {event.artist.name === 'Myriam Fares' && (
                     <a
                       href="https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI%27S+WHITE"
                       target="_blank"
@@ -222,12 +224,6 @@ const EventsSection = () => {
                     >
                       Book Now
                     </a>
-                  ) : (
-                    <button
-                      className="mt-auto bg-tali-lime text-[#371990] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#d4ff3f] transition-colors duration-200"
-                    >
-                      Book Now
-                    </button>
                   )}
                 </div>
               </div>
