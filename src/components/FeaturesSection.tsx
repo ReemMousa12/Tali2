@@ -1,6 +1,6 @@
 import background from '../assets/background/1.jpg';
 
-const features = [
+const features= [
 	{
 		number: '1',
 		title: 'Unified Dashboard',
@@ -25,7 +25,7 @@ const FeaturesSection = () => {
 	return (
 		<section
 			id="features"
-			className="py-30 px-4 relative overflow-hidden"
+			className="py-20 px-4 relative overflow-hidden"
 			style={{
         paddingTop: '8rem',
 				backgroundImage: `url(${background})`,
@@ -40,7 +40,7 @@ const FeaturesSection = () => {
 				className="background-headline wm wow slideInUp animated"
 				style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(2rem, 8vw, 7.5rem)',
           opacity: 0.2,
           position: 'absolute',
           left: 0,
@@ -48,8 +48,8 @@ const FeaturesSection = () => {
           width: '100%',
           textAlign: 'center',
           fontFamily: 'Red Hat Display, sans-serif',
-         
-          letterSpacing: '5rem',
+          paddingLeft: 'clamp(0px, 4vw, 60px)',
+          letterSpacing: 'clamp(1rem, 7vw, 5rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -64,8 +64,8 @@ const FeaturesSection = () => {
 			<div className="container mx-auto section-content relative z-10">
 				{/* Header */}
 				<div className="text-center mb-20">
-					<h2 className="text-6xl md:text-7xl font-bold mb-8">
-						<span className="text-tali-lime font-semibold">02</span> Key Features
+					<h2 className="text-4xl md:text-6xl pt-4 font-bold mb-8">
+						<span className="text-tali-lime font-semibold">02</span> Features
 					</h2>
 				</div>
 						{/* Features Timeline */}

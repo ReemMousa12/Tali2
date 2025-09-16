@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useState } from 'react';
+import bg3 from '@/assets/background/3.jpg';
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -17,20 +18,26 @@ const ContactPage = () => {
   };
 
   return (
-  <div className="min-h-screen flex flex-col bg-[#371990]">
+  <div
+    className="min-h-screen flex flex-col relative"
+    style={{
+      background: `linear-gradient(rgba(55,25,144,0.2), rgba(55,25,144,0.2)), url(${bg3}) center/cover no-repeat`,
+      backgroundAttachment: 'fixed',
+    }}
+  >
       <Header />
   <main className="flex-1 flex flex-col items-center justify-center px-4 py-48 relative">
         <div className="absolute inset-0 pointer-events-none select-none z-0">
           <div className="background-headline wm wow slideInUp animated" style={{
             color: '#fff',
-            fontSize: 100,
+            fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
             opacity: 0.08,
             position: 'absolute',
             left: 0,
             width: '100%',
             textAlign: 'center',
             fontFamily: 'Red Hat Display, sans-serif',
-            letterSpacing: '2.5rem',
+            letterSpacing: 'clamp(0.5rem, 5vw, 2.5rem)',
             textTransform: 'uppercase',
             top: 80,
             userSelect: 'none',

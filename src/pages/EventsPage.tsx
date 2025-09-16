@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ScheduleSection from '../components/ScheduleSection';
 import { useState } from 'react';
+import bg2 from '@/assets/background/3.jpg';
 
 // Import artist images
 import amr1 from '@/assets/artists/amrdiab/amr1.jpg';
@@ -35,27 +36,33 @@ const EventsPage = () => {
     (!date || e.date === date)
   );
   return (
-    <div className="min-h-screen flex flex-col bg-[#1a1333]">
+    <div
+      className="min-h-screen flex flex-col relative"
+      style={{
+        background: ` url(${bg2}) center/cover no-repeat`,
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <Header />
       <main className="flex-1">
         {/* Events Grid with Filters */}
-  <section className="relative py-10 px-2 sm:px-4 overflow-hidden" style={{background: '#371990'}}>
+  <section className="relative py-10 px-2 sm:px-4 overflow-hidden" >
           {/* Decorative EVENTS background text */}
           <div
             className="background-headline wm wow slideInUp animated select-none pointer-events-none"
             style={{
               color: '#fff',
-              fontSize: 120,
+              fontSize: 'clamp(3rem, 8vw, 7.5rem)',
               opacity: 0.11,
               position: 'absolute',
               left: 0,
-              
               zIndex: 1,
               paddingTop: '2rem',
               width: '100%',
+              paddingLeft: '1.2rem',
               textAlign: 'center',
               fontFamily: 'Red Hat Display, sans-serif',
-              letterSpacing: '3.5rem',
+              letterSpacing: 'clamp(1rem, 8vw, 6rem)',
               textTransform: 'uppercase',
               top: 60,
               userSelect: 'none',

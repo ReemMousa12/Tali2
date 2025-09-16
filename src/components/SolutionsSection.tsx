@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import entertainmentImg from "@/assets/entertainment.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
 import corporateImg from "@/assets/corporate.jpg";
+import bg4 from "@/assets/background/4.jpg";
 
 const SolutionsSection = () => {
   const solutions = [
@@ -41,7 +42,14 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <section id="solutions" className="py-24 px-4 relative overflow-hidden" style={{ background: '#371990' }}>
+    <section
+      id="solutions"
+      className="py-24 px-4 relative overflow-hidden"
+      style={{
+  background: `linear-gradient(rgba(55,25,144,0.75), rgba(55,25,144,0.75)), url(${bg4}) center/cover no-repeat`,
+        backgroundAttachment: 'fixed',
+      }}
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 geometric-overlay opacity-20" />
       
@@ -50,7 +58,7 @@ const SolutionsSection = () => {
 				className="background-headline wm wow slideInUp animated"
 				style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(2rem, 8vw, 7.5rem)',
           opacity: 0.2,
           position: 'absolute',
           left: 0,
@@ -58,8 +66,8 @@ const SolutionsSection = () => {
           width: '100%',
           textAlign: 'center',
           fontFamily: 'Red Hat Display, sans-serif',
-         
-          letterSpacing: '3rem',
+          paddingLeft: 'clamp(0px, 4vw, 60px)',
+          letterSpacing: 'clamp(1rem, 7vw, 3rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -75,11 +83,9 @@ const SolutionsSection = () => {
       <div className="container mx-auto max-w-7xl section-content">
         {/* Header */}
         <div className="text-center mb-20">
-        <h2 className="text-6xl md:text-7xl pt-4 font-bold mb-4">
+        <h2 className="text-4xl md:text-6xl font-bold pt-4">
 						<span className="text-tali-lime font-semibold">01</span> Our Solutions
-					</h2>
-          
-        </div>
+					</h2>        </div>
 
         {/* Solutions Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-20">

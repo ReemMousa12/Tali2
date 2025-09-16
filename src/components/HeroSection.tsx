@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/1.jpg";
+import heroImage from "@/assets/hero-dj.jpg";
 
 const HeroSection = () => {
   return (
@@ -14,8 +14,8 @@ const HeroSection = () => {
         }}
       />
       
-      {/* Gradient Overlay */}
-      <div />
+  {/* Overlay */}
+  <div className="absolute inset-0 z-0" style={{ background: 'rgba(55,25,144,0.65)' }} />
       
       {/* Geometric Overlay */}
       <div className="absolute inset-0 geometric-overlay" />

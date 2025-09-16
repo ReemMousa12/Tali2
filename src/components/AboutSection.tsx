@@ -1,5 +1,5 @@
-import aboutImage from "@/assets/about-image.jpg";
-import one from "@/assets/background/1.jpg";
+
+import one from "@/assets/background/8.jpg";
 
 const AboutSection = () => {
   const values = [
@@ -22,7 +22,14 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden" style={{ background: '#371990' }}>
+    <section
+      id="about"
+      className="py-24 px-4 relative overflow-hidden"
+      style={{
+  background: `linear-gradient(rgba(55,25,144,0.7), rgba(55,25,144,0.7)), url(${one}) 70% 85%/cover no-repeat`,
+        backgroundAttachment: 'fixed',
+      }}
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 geometric-overlay opacity-20" />
       
@@ -31,7 +38,7 @@ const AboutSection = () => {
         className="background-headline wm wow slideInUp animated"
          style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(2rem, 8vw, 7.5rem)',
           opacity: 0.2,
           position: 'absolute',
           left: 0,
@@ -39,8 +46,7 @@ const AboutSection = () => {
           width: '100%',
           textAlign: 'center',
           fontFamily: 'Red Hat Display, sans-serif',
-         
-          letterSpacing: '4rem',
+          letterSpacing: 'clamp(0.1rem, 4vw, 4rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -55,10 +61,10 @@ const AboutSection = () => {
       
       <div className="container mx-auto max-w-7xl section-content">
         {/* Who We Are */}
-        <div className="text-center mb-32 pt-8">
+        <div className="text-center mb-32 pt-4">
           <div>
            
-            <h3 className="text-5xl font-bold  mb-8 text-tali-lime ">
+            <h3 className="text-2xl md:text-5xl font-bold mb-4 text-tali-lime ">
               WHO WE ARE 
             </h3>
             <div
@@ -93,27 +99,13 @@ const AboutSection = () => {
         </div>
 
         {/* Vision & Mission */}
-        <div className="relative mb-32 " style={{
-          backgroundImage: `url(${one})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          borderRadius: '2rem',
-          overflow: 'hidden',
-          paddingTop: '4rem',
-          position: 'relative',
-          left: '50%',
-          right: '50%',
-          transform: 'translateX(-50%)',
-          width: '100vw',
-          height: '80vh',
-        }}>
+        <div className="relative text-center mb-32">
           {/* Decorative PURPOSE background text */}
           <div
             className="background-headline wm wow slideInUp animated"
             style={{
               color: '#fff',
-              fontSize: 120,
+              fontSize: 'clamp(2rem, 7vw, 7.5rem)',
               opacity: 0.13,
               position: 'absolute',
               paddingTop: '4rem',
@@ -122,7 +114,7 @@ const AboutSection = () => {
               width: '100%',
               textAlign: 'center',
               fontFamily: 'Red Hat Display, sans-serif',
-              letterSpacing: '4rem',
+              letterSpacing: 'clamp(0.1rem, 6vw, 3rem)',
               textTransform: 'uppercase',
               visibility: 'visible',
               animationName: 'slideInUp',
@@ -136,7 +128,7 @@ const AboutSection = () => {
             PURPOSE
           </div>
 
-          <h3 className="text-5xl font-bold mb-8 text-tali-lime pt-8 text-center relative z-10" style={{fontFamily: 'Red Hat Display, Montserrat, Poppins, sans-serif', letterSpacing: '-0.04em'}}>Vision & Mission</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-4 text-tali-lime pt-32 text-center relative z-10" style={{fontFamily: 'Red Hat Display, Montserrat, Poppins, sans-serif', letterSpacing: '-0.04em'}}>Vision & Mission</h3>
             <div
               className="small-border bg-color wow  zoomIn"
               style={{
@@ -191,13 +183,13 @@ const AboutSection = () => {
         `}</style>
 
         {/* Core Values */}
-        <div className="relative text-center mb-16 flex flex-col items-center">
+        <div className="relative text-center mb-16 flex flex-col pt-16 items-center">
           {/* Decorative Background Headline for Values */}
           <div
             className="background-headline wm wow slideInUp animated"
             style={{
               color: '#fff',
-              fontSize: 120,
+              fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
               opacity: 0.13,
               position: 'absolute',
               left: 0,
@@ -205,9 +197,10 @@ const AboutSection = () => {
               width: '100%',
               textAlign: 'center',
               fontFamily: 'Red Hat Display, sans-serif',
-              letterSpacing: '4rem',
+              letterSpacing: 'clamp(0.1rem, 7vw, 4rem)',
               textTransform: 'uppercase',
               visibility: 'visible',
+              paddingTop: '2rem',
               animationName: 'slideInUp',
               backgroundSize: 'cover',
               transform: 'translate3d(0px, 0px, 0px)',
@@ -218,7 +211,7 @@ const AboutSection = () => {
           >
             VALUES
           </div>
-          <h3 className="text-5xl font-bold  mb-8 pt-7 text-tali-lime ">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4 pt-3 text-tali-lime ">
             <span className="text-gradient-lime">Core Values</span>
           </h3>
             <div

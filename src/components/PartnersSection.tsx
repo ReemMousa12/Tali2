@@ -33,7 +33,7 @@ const PartnersSection = () => {
         className="background-headline wm wow slideInUp animated"
         style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(2rem, 8vw, 7.5rem)',
           opacity: 0.13,
           position: 'absolute',
           left: 0,
@@ -41,8 +41,8 @@ const PartnersSection = () => {
           width: '100%',
           textAlign: 'center',
           fontFamily: 'Red Hat Display, sans-serif',
-          paddingLeft: '80px',
-          letterSpacing: '5rem',
+          paddingLeft: 'clamp(0px, 4vw, 80px)',
+          letterSpacing: 'clamp(1rem, 7vw, 5rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -57,7 +57,7 @@ const PartnersSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 pt-4">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 pt-4">
             <span className="text-tali-lime font-semibold">03</span> Partners
           </h2>
         </div>

@@ -71,7 +71,7 @@ const ScheduleSection = () => {
         className="background-headline wm wow slideInUp animated"
         style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
           opacity: 0.2,
           position: 'absolute',
           left: 0,
@@ -79,8 +79,8 @@ const ScheduleSection = () => {
           width: '100%',
           textAlign: 'center',
           fontFamily: 'Red Hat Display, sans-serif',
-          paddingLeft: '60px',
-          letterSpacing: '5rem',
+          paddingLeft: 'clamp(0px, 4vw, 60px)',
+          letterSpacing: 'clamp(1rem, 5vw, 5rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -95,8 +95,8 @@ const ScheduleSection = () => {
   <div className="container mx-auto max-w-7xl section-content px-0 sm:px-4">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 pt-4">
-           <span className="text-tali-lime font-semibold">02</span> Schedule
+             <h2 className="text-4xl md:text-6xl font-bold mb-8 pt-4">
+            <span className="text-tali-lime font-semibold">02</span> Schedule
           </h2>
         </div>
         {/* Month Navigation */}

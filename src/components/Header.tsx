@@ -35,7 +35,7 @@ const Header = () => {
                 fontSize: '2.2rem',
                 letterSpacing: '-0.04em',
                 lineHeight: 1,
-                marginRight: '0.1em',
+               marginRight: '0.03em',
                 display: 'inline-block',
                 verticalAlign: 'middle',
                 textTransform: 'lowercase',
@@ -47,12 +47,13 @@ const Header = () => {
               style={{
                 position: 'absolute',
                 paddingRight:"7rem",
-                bottom: '-0.3em',
-                fontSize: '1rem',
+                
+                fontSize: '0.5rem',
                 color: '#ffffffff',
                 fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
                 fontWeight: 400,
                 opacity: 0.85,
+                paddingTop: '3em'
               }}
             >
               ®
@@ -87,7 +88,7 @@ const Header = () => {
               <div className="flex-1 flex justify-center">
                 <img src={logo} alt="Tali Logo" className="h-10 w-auto" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
                 <span style={{ color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '-0.04em', lineHeight: 1, display: 'inline-block', verticalAlign: 'middle', textTransform: 'lowercase', marginLeft: 8 }}>tali</span>
-                <span style={{ fontSize: '1rem', color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 400, opacity: 0.85, marginLeft: 2, paddingTop: '1em' }}>®</span>
+                <span style={{ fontSize: '0.5rem', color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 400, opacity: 0.85, marginLeft: 2, paddingTop: '3em' }}>®</span>
               </div>
               <button className="absolute right-0 top-1/2 -translate-y-1/2 text-3xl text-tali-lime px-2" onClick={() => setMenuOpen(false)} aria-label="Close menu">×</button>
             </div>

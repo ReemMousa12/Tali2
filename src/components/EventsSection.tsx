@@ -111,16 +111,16 @@ const EventsSection = () => {
         className="background-headline wm wow slideInUp animated"
         style={{
           color: '#fff',
-          fontSize: 120,
+          fontSize: 'clamp(3rem, 8vw, 7.5rem)',
           opacity: 0.2,
           position: 'absolute',
           left: 0,
           width: '100%',
           textAlign: 'center',
           paddingTop: '3rem',
-          paddingLeft: '60px',
+          paddingLeft: 'clamp(0px, 4vw, 60px)',
           fontFamily: 'Red Hat Display, sans-serif',
-          letterSpacing: '5rem',
+          letterSpacing: 'clamp(1rem, 9vw, 6rem)',
           textTransform: 'uppercase',
           visibility: 'visible',
           animationName: 'slideInUp',
@@ -147,7 +147,7 @@ const EventsSection = () => {
       <div className="container mx-auto max-w-7xl section-content relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
             <span className="text-tali-lime font-semibold">01</span> Events
           </h2>
         </div>
