@@ -77,7 +77,7 @@ const SolutionsSection = () => {
           userSelect: 'none',
         }}
       >
-        SOLUTIONS
+        SOLUTION
       </div>
       
       <div className="container mx-auto max-w-7xl section-content">

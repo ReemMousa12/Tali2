@@ -31,7 +31,7 @@ const Footer = () => {
                     fontSize: '2.2rem',
                     letterSpacing: '-0.04em',
                     lineHeight: 1,
-                    marginRight: '0.1em',
+                    marginRight: '0.03em',
                     display: 'inline-block',
                     verticalAlign: 'middle',
                     textTransform: 'lowercase',
@@ -41,15 +41,16 @@ const Footer = () => {
                 </span>
                 <span
                   style={{
-                    position: 'absolute',
-                    paddingRight: "7rem",
-                    bottom: '-0.3em',
-                    fontSize: '1rem',
-                    color: '#ffffffff',
-                    fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
-                    fontWeight: 400,
-                    opacity: 0.85,
-                  }}
+                position: 'absolute',
+                paddingRight:"7rem",
+                
+                fontSize: '0.5rem',
+                color: '#ffffffff',
+                fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
+                fontWeight: 400,
+                opacity: 0.85,
+                paddingTop: '3em'
+              }}
                 >
                   ®
                 </span>
@@ -83,7 +84,7 @@ const Footer = () => {
               </li>
               <li className="text-tali-text-secondary flex items-center gap-2">
                 <Phone className="w-4 h-4 text-tali-lime" />
-                +2101228588800
+                +201228588900
               </li>
               <li className="text-tali-text-secondary flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-tali-lime" />

@@ -31,7 +31,7 @@ const ContactPage = () => {
           <div className="background-headline wm wow slideInUp animated" style={{
             color: '#fff',
             fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
-            opacity: 0.08,
+            opacity: 0.13,
             position: 'absolute',
             left: 0,
             width: '100%',

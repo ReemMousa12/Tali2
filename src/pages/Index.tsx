@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
 import EventsSection from "@/components/EventsSection";
 
 import ScheduleSection from "@/components/ScheduleSection";
@@ -11,7 +10,6 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <HeroSection />
       <EventsSection />
   
       <ScheduleSection />

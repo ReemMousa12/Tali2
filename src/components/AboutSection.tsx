@@ -61,10 +61,10 @@ const AboutSection = () => {
       
       <div className="container mx-auto max-w-7xl section-content">
         {/* Who We Are */}
-        <div className="text-center mb-32 pt-4">
+        <div className="text-center mb-32 pt-8">
           <div>
            
-            <h3 className="text-2xl md:text-5xl font-bold mb-4 text-tali-lime ">
+            <h3 className="text-2xl md:text-5xl font-bold mb-3 text-tali-lime ">
               WHO WE ARE 
             </h3>
             <div
@@ -103,32 +103,31 @@ const AboutSection = () => {
           {/* Decorative PURPOSE background text */}
           <div
             className="background-headline wm wow slideInUp animated"
-            style={{
-              color: '#fff',
-              fontSize: 'clamp(2rem, 7vw, 7.5rem)',
-              opacity: 0.13,
-              position: 'absolute',
-              paddingTop: '4rem',
-              left: 0,
-              zIndex: 0,
-              width: '100%',
-              textAlign: 'center',
-              fontFamily: 'Red Hat Display, sans-serif',
-              letterSpacing: 'clamp(0.1rem, 6vw, 3rem)',
-              textTransform: 'uppercase',
-              visibility: 'visible',
-              animationName: 'slideInUp',
-              backgroundSize: 'cover',
-              transform: 'translate3d(0px, 0px, 0px)',
-              pointerEvents: 'none',
-              userSelect: 'none',
-              top: 0,
-            }}
+           style={{
+          color: '#fff',
+          fontSize: 'clamp(2rem, 8vw, 7.5rem)',
+          opacity: 0.2,
+          position: 'absolute',
+          left: 0,
+          zIndex: 0,
+          width: '100%',
+          textAlign: 'center',
+          paddingTop: '3rem',
+          fontFamily: 'Red Hat Display, sans-serif',
+          letterSpacing: 'clamp(0.1rem, 5vw, 4rem)',
+          textTransform: 'uppercase',
+          visibility: 'visible',
+          animationName: 'slideInUp',
+          backgroundSize: 'cover',
+          transform: 'translate3d(0px, 0px, 0px)',
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}
           >
             PURPOSE
           </div>
 
-          <h3 className="text-3xl md:text-4xl font-bold mb-4 text-tali-lime pt-32 text-center relative z-10" style={{fontFamily: 'Red Hat Display, Montserrat, Poppins, sans-serif', letterSpacing: '-0.04em'}}>Vision & Mission</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-4 text-tali-lime pt-24 text-center relative z-10" style={{fontFamily: 'Red Hat Display, Montserrat, Poppins, sans-serif', letterSpacing: '-0.04em'}}>Vision & Mission</h3>
             <div
               className="small-border bg-color wow  zoomIn"
               style={{
@@ -187,20 +186,21 @@ const AboutSection = () => {
           {/* Decorative Background Headline for Values */}
           <div
             className="background-headline wm wow slideInUp animated"
-            style={{
+           style={{
               color: '#fff',
-              fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
+              fontSize: 'clamp(2rem, 7vw, 7.5rem)',
               opacity: 0.13,
               position: 'absolute',
+              paddingTop: '3rem',
               left: 0,
+              paddingLeft: '2rem',
               zIndex: 0,
               width: '100%',
               textAlign: 'center',
               fontFamily: 'Red Hat Display, sans-serif',
-              letterSpacing: 'clamp(0.1rem, 7vw, 4rem)',
+              letterSpacing: 'clamp(1rem, 6vw, 2rem)',
               textTransform: 'uppercase',
               visibility: 'visible',
-              paddingTop: '2rem',
               animationName: 'slideInUp',
               backgroundSize: 'cover',
               transform: 'translate3d(0px, 0px, 0px)',
@@ -232,7 +232,7 @@ const AboutSection = () => {
           {/* Horizontal Timeline for Core Values */}
           <div className="relative flex flex-col md:flex-row items-stretch justify-center gap-0 w-full pt-12 max-w-6xl mx-auto z-10">
             {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-tali-lime/60 to-tali-lime/0 z-0" style={{maxWidth: '90%', margin: '0 auto', transform: 'translateY(-50%)'}} />
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-tali-lime/60 to-tali-lime/0 z-0" style={{maxWidth: '90%', margin: '0 auto', transform: 'translateY(-50%)'}} />
             {values.map((value, index) => {
               const isUp = index % 2 === 0;
               return (

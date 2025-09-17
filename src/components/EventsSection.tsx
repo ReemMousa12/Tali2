@@ -1,75 +1,88 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+
 import amr1 from "@/assets/artists/amrdiab/amr3.jpg";
 import myriam from "@/assets/artists/Myriamfares/myriam.jpg";
 import pawsa from "@/assets/artists/pawsa/pawsa1.jpg";
 import yara from "@/assets/artists/yaratarek/yara3.jpg";
 import wegz from "@/assets/artists/wegz/wegz.jpg";
+import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
+
+import hotsince1 from "@/assets/artists/hotsince'82/h2.jpg";
+import caiiro1 from "@/assets/artists/caiiro/c2.jpg";
+import playhaus from "@/assets/artists/playhaus/p1.jpg";
+
+
+
+
 
 
 const upcomingEvents = [
-    {
+  {
     title: "Myriam Fares at KIKI’s White",
     date: "Sep 19 | 09:00 PM",
     image: myriam,
     desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
     artist: { name: 'Myriam Fares', image: myriam }
   },
-  // {
-  //   title: "Wegz Live Album Launch at KIKI'S Sage",
-  //   date: "Sept 18, 2025",
-  //   image: wegz,
-  //   desc: "Wegz performing live at KIKI's Sage for his official album launch at 8pm.",
-  //   artist: { name: 'Wegz', image: wegz }
-  // },
-
-  // {
-  //   title: 'Sunset Beach Party',
-  //   date: 'Oct 5, 2025',
-  //   image: amr1,
-  //   desc: 'Dance into the night with live music and beach vibes.',
-  //   artist: { name: 'Amr Diab' }
-  // },
-  // {
-  //   title: 'Electro Parade',
-  //   date: 'Oct 12, 2025',
-  //   image: yara,
-  //   desc: 'Join the parade with electrifying performances and light shows.',
-  //   artist: { name: 'Yara Tarek'}
-  // },
-  // {
-  //   title: 'Closing Ceremony',
-  //   date: 'Oct 19, 2025',
-  //   image: pawsa,
-  //   desc: 'Celebrate the festival finale with a spectacular show.',
-  //   artist: { name: 'Pawsa' }
-  // },
+  {
+    title: "Yoyaku 10th Anniversary Showcase",
+    date: "Oct 9, 2025 | 7:00 PM",
+    image: yoyaku1,
+    desc: "Yoyaku celebrates 10 years in Cairo! Join O.bee B2B Toman Station, Mari.te, Zeina, and Hermit B2B Joey for a special night at The Warehouse, Cairo Business Park. Early Bird: 1500 EGP. Doors open 7 PM.",
+    artist: { name: 'YOYAKU', image: yoyaku1 },
+    bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
+  },
+ 
 ];
 
 
 const hotEvents = [
-   {
+  {
     title: "Myriam Fares at KIKI’s White",
     date: "Sep 19 | 09:00 PM",
     image: myriam,
     desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
     artist: { name: 'Myriam Fares', image: myriam }
   },
-  {
-    title: "Wegz Live Album Launch at KIKI'S Sage",
-    date: "Sept 18, 2025",
-    image: wegz,
-    desc: "Wegz performing live at KIKI's Sage for his official album launch at 8pm.",
-    artist: { name: 'Wegz', image: wegz }
+   {
+    title: "Yoyaku 10th Anniversary Showcase",
+    date: "Oct 9, 2025 | 7:00 PM",
+    image: yoyaku1,
+    desc: "Yoyaku celebrates 10 years in Cairo! Join O.bee B2B Toman Station, Mari.te, Zeina, and Hermit B2B Joey for a special night at The Warehouse, Cairo Business Park. Early Bird: 1500 EGP. Doors open 7 PM.",
+    artist: { name: 'YOYAKU', image: yoyaku1 },
+    bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
   },
+   {
+    title: "PLAYHAUS Showcase ft. Laidlaw",
+    date: "Aug 16, 2025 | 3:00 PM",
+    image: playhaus,
+    desc: "UK sensation Laidlaw makes his Egypt debut alongside Youssef Awadly, Hisham Zahran, Maie, Safe Sol & Toola. Two stages from 3 PM late into the night with open bar & food 3-5 PM.",
+    artist: { name: 'Laidlaw', image: playhaus }
+  },
+  {
+    title: "Hot Since 82, Awadly & Azaar",
+    date: "Jul 17, 2025 | 9:00 PM",
+    image: hotsince1,
+    desc: "The legendary Hot Since 82 brings his signature sound with support from Awadly and Azaar.",
+    artist: { name: 'Hot Since 82', image: hotsince1 }
+  },
+  {
+    title: "Pawsa - KIKI's Opening",
+    date: "Jul 18, 2025 | 9:00 PM",
+    image: pawsa,
+    desc: "Join us for the opening party featuring Pawsa with special guests Aly B and Delrady at KIKI's Sage.",
+    artist: { name: 'Pawsa', image: pawsa }
+  },
+  {
+    title: "Caiiro, George Gehad & Hey-D",
+    date: "Jul 21, 2025 | 9:00 PM",
+    image: caiiro1,
+    desc: "South African house master Caiiro headlines with George Gehad and Hey-D.",
+    artist: { name: 'Caiiro', image: caiiro1 }
+  }
+  
  
-  {
-    title: 'VIP Night Party',
-    date: 'Sept 20, 2025',
-    image: amr1,
-    desc: 'Experience an exclusive night with top DJs and special guests.',
-    artist: { name: 'Amr Diab' }
-  },
 
 ];
 
@@ -105,7 +118,7 @@ const EventsSection = () => {
   }, []);
 
   return (
-    <section className="relative py-16 text-white overflow-hidden" style={{background: '#371990'}}>
+    <section className="relative py-28 text-white overflow-hidden" style={{background: '#371990'}}>
       {/* Background Headline */}
       <div
         className="background-headline wm wow slideInUp animated"
@@ -117,7 +130,7 @@ const EventsSection = () => {
           left: 0,
           width: '100%',
           textAlign: 'center',
-          paddingTop: '3rem',
+          paddingTop: '6rem',
           paddingLeft: 'clamp(0px, 4vw, 60px)',
           fontFamily: 'Red Hat Display, sans-serif',
           letterSpacing: 'clamp(1rem, 9vw, 6rem)',
@@ -158,11 +171,23 @@ const EventsSection = () => {
               <img
                 src={upcomingEvents[current].image}
                 alt={upcomingEvents[current].title}
-                className={`w-full h-full object-cover  rounded-3xl`
+                className={`w-full h-full object-cover rounded-3xl`
                   + (upcomingEvents[current].artist.name === 'Myriam Fares' ? ' object-top' : '')
                   + (upcomingEvents[current].artist.name === 'Yara Tarek' || upcomingEvents[current].artist.name === 'Pawsa' ? ' object-[center_20%]' : '')
+                  + (upcomingEvents[current].artist.name === 'Yoyaku' ? ' object-[center_20%]' : '')
                 }
-                style={{height: '100%', minHeight: 320, objectPosition: (upcomingEvents[current].artist.name === 'Yara Tarek' ) ? 'center 85%' : (upcomingEvents[current].artist.name === 'Myriam Fares' ? 'top' : 'center')}}
+                style={{
+                  height: '100%',
+                  minHeight: 320,
+                  objectPosition:
+                    upcomingEvents[current].artist.name === 'Yara Tarek'
+                      ? 'center 85%'
+                      : upcomingEvents[current].artist.name === 'Myriam Fares'
+                      ? 'top'
+                      : upcomingEvents[current].artist.name === 'Yoyaku'
+                      ? 'center 80%'
+                      : 'center',
+                }}
               />
               {/* Artist avatar */}
               <div className="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 rounded-full px-3 py-1 shadow-lg">
@@ -214,9 +239,11 @@ const EventsSection = () => {
                     {event.title}
                   </h4>
                   <p className="mb-4 text-sm opacity-90 flex-1">{event.desc}</p>
-                  {event.artist.name === 'Myriam Fares' && (
+                  {(event.artist.name === 'Myriam Fares' || event.artist.name === 'YOYAKU') && (
                     <a
-                      href="https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI%27S+WHITE"
+                      href={event.artist.name === 'Myriam Fares'
+                        ? "https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI%27S+WHITE"
+                        : event.bookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-auto bg-tali-lime text-[#371990] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#d4ff3f] transition-colors duration-200 text-center"

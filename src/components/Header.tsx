@@ -99,15 +99,19 @@ const Header = () => {
               <Link to="/events" className="text-tali-text-primary hover:text-tali-lime text-xl" onClick={()=>setMenuOpen(false)}>Events</Link>
               <Link to="/gallery" className="text-tali-text-primary hover:text-tali-lime text-xl" onClick={()=>setMenuOpen(false)}>Gallery</Link>
               <Link to="/contact-page" className="text-tali-text-primary hover:text-tali-lime text-xl" onClick={()=>setMenuOpen(false)}>Contact Us</Link>
-              <Button variant="lime" className="mt-8 w-full">BUY A TICKET</Button>
+              <Link to="/events" onClick={()=>setMenuOpen(false)}>
+                <Button variant="lime" className="mt-8 w-full">BUY A TICKET</Button>
+              </Link>
             </div>
           </div>
         </nav>
 
         {/* CTA Button */}
-        <Button variant="lime" className="hidden md:block">
-          BUY A TICKET
-        </Button>
+        <Link to="/events">
+          <Button variant="lime" className="hidden md:block">
+            BUY A TICKET
+          </Button>
+        </Link>
 
         {/* Mobile menu button */}
         <Button

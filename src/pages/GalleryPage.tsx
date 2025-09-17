@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import img1 from "@/assets/gallery/1.jpg";
-import img2 from "@/assets/gallery/2.jpg";
-import img3 from "@/assets/gallery/3.jpg";
-import img4 from "@/assets/gallery/4.jpg";
-import img5 from "@/assets/gallery/5.jpg";
-import img6 from "@/assets/gallery/6.jpg";
+// import img1 from "@/assets/gallery/1.jpg";
+// import img2 from "@/assets/gallery/2.jpg";
+// import img3 from "@/assets/gallery/3.jpg";
+// import img4 from "@/assets/gallery/4.jpg";
+// import img5 from "@/assets/gallery/5.jpg";
+// import img6 from "@/assets/gallery/6.jpg";
 import kiki1 from "@/assets/gallery/KIKIsSage1.jpg";
 import kiki2 from "@/assets/gallery/KIKIsSage2.jpg";
 import kiki3 from "@/assets/gallery/KIKIsSage3.jpg";
@@ -12,16 +12,48 @@ import kiki4 from "@/assets/gallery/KIKIsSage4.jpg";
 import kiki5 from "@/assets/gallery/KIKIsSage5.jpg";
 import kiki6 from "@/assets/gallery/KIKIsSage6.jpg";
 import kiki7 from "@/assets/gallery/KIKIsSage7.jpg";
+
+// Artist images for gallery
+import amr1 from "@/assets/artists/amrdiab/amr1.jpg";
+import amr2 from "@/assets/artists/amrdiab/amr2.jpg";
+import amr3 from "@/assets/artists/amrdiab/amr3.jpg";
+
+import pawsa1 from "@/assets/artists/pawsa/pawsa1.jpg";
+import pawsa2 from "@/assets/artists/pawsa/pawsa2.jpg";
+import pawsa3 from "@/assets/artists/pawsa/pawsa3.jpg";
+import pawsa4 from "@/assets/artists/pawsa/pawsa4.jpg";
+import wegz from "@/assets/artists/wegz/wegz.jpg";
+import yara1 from "@/assets/artists/yaratarek/yara1.jpg";
+import yara2 from "@/assets/artists/yaratarek/yara2.jpg";
+
+
+import hotsince1 from "@/assets/artists/hotsince'82/h2.jpg";
+import caiiro1 from "@/assets/artists/caiiro/c2.jpg";
+import playhaus from "@/assets/artists/playhaus/p1.jpg";
+import frank from "@/assets/artists/franky/f1.jpg";
+import notredame1 from "@/assets/artists/NOTREDAME/N1.jpg";
+import misty1 from "@/assets/artists/misty/m1.jpg";
+import fspins1 from "@/assets/artists/f-spins/f1.jpg";
+import rolbac1 from "@/assets/artists/rolbac/r1.jpg";
+import thatgirl1 from "@/assets/artists/thatgirlsherryk/t1.jpg";
+import paar1 from "@/assets/artists/paarmuzik/p1.jpg";
+import shimza1 from "@/assets/artists/shimza,ziad,kareem/c1.jpg";
+import horrible from "@/assets/artists/horribles/h1.jpg";
+import jsomar from "@/assets/artists/jsomar/j2.jpg";
+import oden from "@/assets/artists/oden/o1.jpg";
+import ashibah from "@/assets/artists/ashibah/a1.jpg";
+import kz from "@/assets/artists/kzandcake/k1.jpg";
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const galleryImages = [
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
+  // img1,
+  // img2,
+  // img3,
+  // img4,
+  // img5,
+  // img6,
   kiki1,
   kiki2,
   kiki3,
@@ -29,6 +61,36 @@ const galleryImages = [
   kiki5,
   kiki6,
   kiki7,
+  // Artist images
+  amr1,
+  amr2,
+  amr3,
+  
+  pawsa1,
+  pawsa2,
+  pawsa3,
+  pawsa4,
+  wegz,
+  yara1,
+  yara2,
+  
+
+  hotsince1,
+  caiiro1,
+  playhaus,
+  frank,
+  notredame1,
+  misty1,
+  fspins1,
+  rolbac1,
+  thatgirl1,
+  paar1,
+  shimza1,
+  horrible,
+  jsomar,
+  oden,
+  ashibah,
+  kz,
 ];
 
 const GallerySection: React.FC = () => {

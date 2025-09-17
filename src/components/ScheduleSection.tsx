@@ -3,9 +3,193 @@ import event1 from "@/assets/event1.jpg";
 import event2 from "@/assets/event2.jpg";
 import event3 from "@/assets/event3.jpg";
 import myriam from "@/assets/artists/Myriamfares/myriam.jpg";
+import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
 import background from '../assets/background/1.jpg';
 
+// KIKI's schedule artists
+import notredame1 from '@/assets/artists/NOTREDAME/N1.jpg';
+import caiiro1 from '@/assets/artists/caiiro/c2.jpg';
+import hotsince1 from '@/assets/artists/hotsince\'82/h2.jpg';
+import misty1 from '@/assets/artists/misty/m1.jpg';
+import fspins1 from '@/assets/artists/f-spins/f1.jpg';
+import rolbac1 from '@/assets/artists/rolbac/r1.jpg';
+import thatgirl1 from '@/assets/artists/thatgirlsherryk/t1.jpg';
+import paar1 from '@/assets/artists/paarmuzik/p1.jpg';
+import shimza1 from '@/assets/artists/shimza,ziad,kareem/c1.jpg';
+import frank from '@/assets/artists/franky/f1.jpg';
+import amrdiab1 from '@/assets/artists/amrdiab/amr1.jpg';
+import wegz1 from '@/assets/artists/wegz/wegz.jpg';
+import pawsa1 from '@/assets/artists/pawsa/pawsa1.jpg';
+import yara1 from '@/assets/artists/yaratarek/yara1.jpg';
+import horrible from '@/assets/artists/horribles/h1.jpg';
+import yara2 from '@/assets/artists/yaratarek/yara2.jpg';
+import kzandcake from '@/assets/artists/kzandcake/k1.jpg';
+import oden from '@/assets/artists/oden/o1.jpg';
+import playhaus from '@/assets/artists/playhaus/p1.jpg';
+import jsomar from '@/assets/artists/jsomar/j2.jpg';
+import ashibah from '@/assets/artists/ashibah/a1.jpg';
+
 const allEvents = [
+  // KIKI's Schedule Events - July 2025
+  {
+    month: "JULY",
+    date: "Jul 3, 2025",
+    title: "Notre Dame Dou Arshad",
+    description: "An exclusive night with Notre Dame Dou Arshad at KIKI's Hacienda White. Experience authentic music in a magical setting.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: notredame1
+  },
+
+  {
+    month: "JULY",
+    date: "Jul 10, 2025",
+    title: "Rolbac, Thatgirl Sherryk & Paar Muzik",
+    description: "An eclectic mix of sounds with Rolbac, Thatgirl Sherryk, and Paar Muzik. Three unique artists, one incredible night.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: rolbac1
+  },
+
+  
+  {
+    month: "JULY",
+    date: "Jul 17, 2025",
+    title: "Hot Since 82, Awadly & Azaar",
+    description: "The legendary Hot Since 82 brings his signature sound with support from Awadly and Azaar.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: hotsince1
+  },
+  {
+    month: "JULY",
+    date: "Jul 18, 2025",
+    title: "Pawsa - KIKI's Opening",
+    description: "Join us for the opening party featuring Pawsa with special guests Aly B and Delrady.",
+    time: "5:00 PM",
+    venue: "KIKI's Sage",
+    image: pawsa1
+  },
+  {
+    month: "JULY",
+    date: "Jul 21, 2025",
+    title: "Caiiro, George Gehad & Hey-D",
+    description: "South African house master Caiiro headlines with George Gehad and Hey-D for an Afro-house celebration.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: caiiro1
+  },
+  {
+    month: "JULY",
+    date: "Jul 24, 2025",
+    title: "Carlita, Misty & F-Spins",
+    description: "International DJ Carlita joins forces with Misty and F-Spins for a night of cutting-edge electronic music.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: misty1
+  },
+  {
+    month: "JULY",
+    date: "Jul 25, 2025",
+    title: "DJ Habibeats, Moody Jones, KZ & Cake, and Horrible",
+    description: "the second Friday, featuring DJ Habibeats, Moody Jones, KZ & Cake, and Horrible!",
+    time: "9:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: horrible
+  },
+  {
+    month: "JULY",
+    date: "Jul 25, 2025",
+    title: "KZ & Cake",
+    description: "An afternoon session with KZ & Cake bringing their unique sound and energy to KIKI's Sage.",
+    time: "4:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: kzandcake
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 16, 2025",
+    title: "PLAYHAUS Showcase ft. Laidlaw",
+    description: "UK sensation Laidlaw makes his Egypt debut alongside Youssef Awadly, Hisham Zahran, Maie, Safe Sol & Toola. ",
+    time: "3:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: playhaus
+  },
+
+  {
+    month: "AUGUST",
+    date: "Aug 1, 2025",
+    title: "Sweely, Talaia, and Jjust Omar",
+    description: "Friday, August 1st is hitting hard with Sweely, Talaia, and Jjust Omar at Hacienda Heneish. Get ready for an intense night of beats!",
+    time: "8:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: jsomar
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 8, 2025",
+    title: "Ashibah, ThatGirl SherryK, and Mady 303",
+    description: "Join us on August 8th with Ashibah, ThatGirl SherryK, and Mady 303 at Hacienda Heneish for an afternoon of incredible music!",
+    time: "5:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: ashibah
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 14, 2025",
+    title: "Yara Tarek & George Gehad",
+    description: "Experience our communal family-style dinner with Live music by Yara Tarek, then let the night flow with cocktails & music from George Gehad.",
+    time: "9:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: yara2
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 15, 2025",
+    title: "Oden & Fatzo, Madmotormiquel & Hisham Zahran",
+    description: "Join us for an electrifying Friday night at KIKI's Sage!",
+    time: "8:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: oden
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 21, 2025",
+    title: "Yara Tarek LIVE at KIKI'S SAGE",
+    description: "This Thursday, gather around our long tables for a true seaside experience! Communal family-style dining paired with Yara Tarek's live performance.",
+    time: "7:00 PM",
+    venue: "KIKI'S SAGE HENEISH",
+    image: yara1
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 22, 2025",
+    title: "Gerd Janson, Mall Grab & Misty",
+    description: "Next Friday will hit different with Gerd Janson, Mall Grab & Misty! An exceptional lineup that promises an unforgettable night.",
+    time: "8:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: event1
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 28, 2025",
+    title: "Franky Rizardo, Misty & Sonii",
+    description: "Dutch house legend Franky Rizardo takes the stage with Misty and Sonii for an epic night of house music.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: frank
+  },
+  {
+    month: "JULY",
+    date: "Jul 31, 2025",
+    title: "Shimza, Ziad Mousa & Kareem Saber",
+    description: "South African techno master Shimza closes the month with Ziad Mousa and Kareem Saber for an unforgettable finale.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: shimza1
+  },
+
+  // Existing events
   {
     month: "JUNE",
     date: "Jun 28, 2025",
@@ -16,41 +200,59 @@ const allEvents = [
     image: event1
   },
   {
-    month: "JULY",
-    date: "Jul 12, 2025",
-    title: "Electro Night",
-    description: "A night of electrifying beats and high-energy performances.",
-    time: "8:30 PM",
-    venue: "Kikis Beach",
-    image: event2
-  },
-  {
-    month: "JULY",
-    date: "Jul 26, 2025",
-    title: "Deep House Vibes",
-    description: "Immerse yourself in deep house music with top DJs.",
-    time: "9:30 PM",
-    venue: "Kikis Sage",
-    image: event3
-  },
-  {
     month: "SEPTEMBER",
     date: "Sep 19, 2025",
     title: "Myriam Fares at KIKI’s White",
     description: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
     time: "09:00 PM",
     venue: "KIKI’s Beach, Hacienda White",
-    image: myriam
+    image: myriam,
+    bookUrl: "https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI'S+WHITE"
+  },
+  {
+    month: "OCTOBER",
+    date: "Oct 9, 2025",
+    title: "Yoyaku 10th Anniversary Showcase",
+    description: "Yoyaku celebrates 10 years in Cairo! Join O.bee B2B Toman Station, Mari.te, Zeina, and Hermit B2B Joey for a special night ",
+    time: "07:00 PM",
+    venue: "The Warehouse, Cairo Business Park",
+    image: yoyaku1,
+    bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
+  },
+  {
+    month: "JULY",
+    date: "Jul 19, 2025",
+    title: "Amr Diab - KIKI's Opening",
+    description: "The second night at KIKI's opening was pure magic as Amr Diab lit up the stage with hit after hit and unstoppable energy.",
+    time: "8:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: amrdiab1
+  },
+  {
+    month: "AUGUST",
+    date: "Aug 29, 2025",
+    title: "Wegz Closing",
+    description: "This weekend, our star Wegz takes over Kiki’s for an unforgettable finale for his official album launch.",
+    time: "9:00 PM",
+    venue: "KIKI's Hacienda White",
+    image: wegz1
   },
   // Add more events for AUGUST as needed
 ];
 
-const months = ["JUNE", "JULY", "AUGUST", "SEPTEMBER"];
-const monthsShort = ["JUN", "JUL", "AUG", "SEPT"];
+const months = ["JULY", "AUGUST", "SEPTEMBER", "OCTOBER"];
+const monthsShort = ["JUL", "AUG", "SEPT", "OCT"];
 
 const ScheduleSection = () => {
   const [selectedMonth, setSelectedMonth] = useState(months[0]);
-  const events = allEvents.filter(e => e.month === selectedMonth);
+  const events = allEvents
+    .filter(e => e.month === selectedMonth)
+    .sort((a, b) => {
+      // Convert date strings to Date objects for proper sorting
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB.getTime() - dateA.getTime(); // Newest first (descending order)
+    });
 
   return (
     <section
@@ -130,17 +332,36 @@ const ScheduleSection = () => {
               {events.map((event, index) => (
                 <div key={index} className="group cursor-pointer flex justify-center w-full sm:w-auto" style={{maxWidth: 400}}>
                   <div className="card-glass rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 flex flex-col w-full sm:w-[350px] min-w-0 max-w-[400px] h-auto min-h-[320px] sm:min-h-[370px] sm:h-[370px]">
-                    <div className="relative w-full" style={{height: 180, minHeight: 140, maxHeight: 200}}>
+                    <div className="relative w-full" style={{height: 220, minHeight: 160, maxHeight: 260}}>
                       <img
                         src={event.image}
                         alt={event.title}
                         className={`w-full h-full transition-transform duration-500 group-hover:scale-110 object-cover${event.title.includes('Myriam Fares') ? ' object-top' : ''}`}
-                        style={{height: '100%', width: '100%', objectFit: 'cover'}} 
+                        style={{
+                          height: '100%', 
+                          width: '100%', 
+                          objectFit: 'cover',
+                          objectPosition: event.title.includes('Wegz') ? '50% 40%' : 
+                                        event.title.includes('DJ Habibeats, Moody Jones, KZ & Cake, and Horrible') ? '50% 20%' :
+                                        event.image.includes('yara1') ? '50% 20%' : 
+                                        event.image === playhaus ? '50% 20%' : undefined
+                        }} 
                       />
                       <div className="absolute inset-0 " />
                       <div className="absolute top-4 left-4 bg-tali-lime text-tali-purple-dark px-3 py-1 rounded-full text-sm font-semibold">
                         {event.date}
                       </div>
+                      {(event.title === 'Yoyaku 10th Anniversary Showcase' || event.title === 'Myriam Fares at KIKI’s White') && event.bookUrl && (
+                        <a
+                          href={event.bookUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute top-4 right-4 bg-tali-lime text-[#371990] font-bold px-4 py-1 rounded-full text-sm shadow hover:bg-[#d4ff3f] transition-colors duration-200 text-center"
+                          style={{zIndex: 10}}
+                        >
+                          Book Now
+                        </a>
+                      )}
                     </div>
                     <div className="p-6 flex-1 flex flex-col justify-between">
                       <div>
@@ -151,10 +372,18 @@ const ScheduleSection = () => {
                           {event.description}
                         </p>
                       </div>
-                      <div className="flex justify-between items-center text-sm mt-auto mb-6" style={{marginBottom: '1.5rem'}}>
-                        <span className="text-tali-lime font-semibold">{event.time}</span>
-                        <span className="text-tali-text-secondary">{event.venue}</span>
-                      </div>
+                      {event.title === 'Yoyaku 10th Anniversary Showcase' && event.bookUrl ? (
+                        <div className="flex justify-between items-center text-sm mt-auto mb-6 gap-2" style={{marginBottom: '1.5rem'}}>
+                          <span className="text-tali-lime font-semibold">{event.time}</span>
+                          <span className="text-tali-text-secondary">{event.venue}</span>
+                          
+                        </div>
+                      ) : (
+                        <div className="flex justify-between items-center text-sm mt-auto mb-6" style={{marginBottom: '1.5rem'}}>
+                          <span className="text-tali-lime font-semibold">{event.time}</span>
+                          <span className="text-tali-text-secondary">{event.venue}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -165,14 +394,21 @@ const ScheduleSection = () => {
               {events.map((event, index) => (
                 <div key={index} className="group cursor-pointer flex justify-center w-full sm:w-auto" style={{maxWidth: 400}}>
                   <div className="card-glass rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 flex flex-col w-full sm:w-[350px] min-w-0 max-w-[400px] h-auto min-h-[320px] sm:min-h-[370px] sm:h-[370px]">
-                    <div className="relative w-full" style={{height: 180, minHeight: 140, maxHeight: 200}}>
+                    <div className="relative w-full" style={{height: 180, minHeight: 160, maxHeight: 250}}>
                       <img
                         src={event.image}
                         alt={event.title}
                         className={`w-full h-full transition-transform duration-500 group-hover:scale-110 object-cover${event.title.includes('Myriam Fares') ? ' object-top' : ''}`}
-                        style={{height: '100%', width: '100%'}}
+                        style={{
+                          height: '100%', 
+                          width: '100%',
+                          objectPosition: event.title.includes('Wegz') ? '50% 20%' : 
+                                        event.title.includes('DJ Habibeats, Moody Jones, KZ & Cake, and Horrible') ? '50% 20%' :
+                                        event.image.includes('yara1') ? '50% 20%' :
+                                        event.image === playhaus ? '50% 20%' : undefined
+                        }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-tali-purple-dark/80 to-transparent" />
+                      <div className="absolute inset-0 " />
                       <div className="absolute top-4 left-4 bg-tali-lime text-tali-purple-dark px-3 py-1 rounded-full text-sm font-semibold">
                         {event.date}
                       </div>
@@ -190,6 +426,7 @@ const ScheduleSection = () => {
                         <span className="text-tali-lime font-semibold">{event.time}</span>
                         <span className="text-tali-text-secondary">{event.venue}</span>
                       </div>
+                     
                     </div>
                   </div>
                 </div>
