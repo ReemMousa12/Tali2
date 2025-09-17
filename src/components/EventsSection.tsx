@@ -202,10 +202,10 @@ const EventsSection = () => {
             </div>
             {upcomingEvents.length > 1 && (
               <>
-                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full p-2 shadow-lg transition-colors duration-200">
+                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full py-1 px-2 shadow-lg transition-colors duration-200">
                   &#8592;
                 </button>
-                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full p-2 shadow-lg transition-colors duration-200">
+                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full py-1 px-2 shadow-lg transition-colors duration-200">
                   &#8594;
                 </button>
               </>
