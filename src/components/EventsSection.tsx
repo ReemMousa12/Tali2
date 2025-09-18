@@ -215,7 +215,7 @@ const EventsSection = () => {
           {confettiDots}
         </div>
       </div>
-      <div className="container mx-auto max-w-6xl section-content relative z-10">
+      <div className="container mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
@@ -224,15 +224,16 @@ const EventsSection = () => {
         </div>
         <div className="relative z-10">
           {/* Carousel */}
-          <div className="relative max-w-6xl sm:max-w-3xl mx-auto mb-16 px-1 sm:px-0">
-            <div
-              className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[250px] sm:h-[360px] md:h-[400px]"
-              style={{
-                boxShadow: "0 8px 32px 0 rgba(205,255,107,0.10)",
-              }}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
+          <div className="flex justify-center mb-10 sm:mb-16 w-full px-1 sm:px-4">
+            <div className="relative w-full max-w-6xl sm:max-w-2xl">
+              <div
+                className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[250px] sm:h-[360px] md:h-[400px]"
+                style={{
+                  boxShadow: "0 8px 32px 0 rgba(205,255,107,0.10)",
+                }}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
               onMouseDown={onMouseDown}
               onMouseMove={onMouseMove}
               onMouseUp={onMouseUp}
@@ -273,6 +274,7 @@ const EventsSection = () => {
                 </div>
               )}
             </div>
+          </div>
           </div>
           {/* Hot Events */}
           <h3 className="text-2xl font-bold mb-6 text-tali-lime text-center">Hot Events</h3>
