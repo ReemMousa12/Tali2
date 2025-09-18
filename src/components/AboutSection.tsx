@@ -229,24 +229,51 @@ const AboutSection = () => {
               data-wow-delay=".4s"
             ></div>
          
-          {/* Horizontal Timeline for Core Values */}
-          <div className="relative flex flex-col md:flex-row items-stretch justify-center gap-0 w-full pt-12 max-w-6xl mx-auto z-10">
-            {/* Timeline Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-tali-lime/60 to-tali-lime/0 z-0" style={{maxWidth: '90%', margin: '0 auto', transform: 'translateY(-50%)'}} />
+          {/* Mobile & Desktop: Values Cards */}
+          <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-6 w-full pt-12 max-w-4xl md:max-w-7xl mx-auto z-10">
+            {/* Desktop: Horizontal Timeline Line - Goes through numbered circles */}
+            <div className="hidden md:block absolute h-0.5 bg-gradient-to-r from-tali-lime/60 via-tali-lime/40 to-tali-lime/60 z-0" style={{
+              top: '72px', // pt-12 (48px) + half circle height (24px) = 72px
+              left: '0',
+              right: '0',
+              maxWidth: '85%',
+              margin: '0 auto'
+            }} />
+            
+            {/* Mobile: Vertical Timeline Line */}
+            <div className="md:hidden absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-tali-lime via-tali-lime/60 to-transparent z-0" />
+            
             {values.map((value, index) => {
-              const isUp = index % 2 === 0;
               return (
-                <div key={index} className="relative flex-1 flex flex-col items-center text-center px-2 min-w-[160px] max-w-xs mb-8 md:mb-0 w-full sm:max-w-xs">
-                  {/* Card above or below */}
-                  <div className="flex flex-row items-center text-left w-full md:flex-col md:items-center md:text-center">
-                    {/* Timeline Dot (Number) */}
-                    <div className="w-10 h-10 mr-4 md:mr-0 md:mb-4 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-lg font-bold text-tali-purple-dark shadow-lg border-4 border-white/30 z-10">
+                <div key={index} className="relative flex-1 w-full max-w-sm mx-auto md:mx-0 mb-8 md:mb-0 md:min-h-[280px] md:flex md:flex-col">
+                  {/* Mobile: Vertical Card with Side Timeline */}
+                  <div className="md:hidden flex items-start gap-4">
+                    {/* Timeline Dot */}
+                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-xl font-bold text-tali-purple-dark shadow-xl border-4 border-white/20 z-10">
                       {index + 1}
                     </div>
-                    <div className={isUp ? "mb-6 w-full" : "mt-6 w-full"}>
-                      <div className="bg-white/10 rounded-2xl p-3 md:p-6 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.04] transition-transform duration-300 w-full sm:max-w-xs sm:border-2 sm:shadow-2xl sm:bg-white/20 sm:p-8 sm:rounded-3xl xs:w-full xs:mx-0 xs:mb-6 xs:border-l-4 xs:border-tali-lime xs:rounded-lg xs:shadow-md xs:bg-white/20">
-                        <h4 className="text-lg md:text-2xl font-bold text-tali-lime mb-1 md:mb-2">{value.title}</h4>
-                        <p className="text-tali-text-secondary leading-relaxed text-xs md:text-base">{value.description}</p>
+                    {/* Mobile Card */}
+                    <div className="flex-1">
+                      <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg rounded-2xl p-6 shadow-2xl border border-white/20 hover:border-tali-lime/40 transition-all duration-300 hover:scale-[1.02]">
+                        <h4 className="text-xl font-bold text-tali-lime mb-3">{value.title}</h4>
+                        <p className="text-white/90 leading-relaxed text-sm">{value.description}</p>
+                        {/* Mobile: Accent line */}
+                        <div className="w-12 h-1 bg-tali-lime rounded-full mt-4"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop: Horizontal Card Layout with Fixed Height */}
+                  <div className="hidden md:flex flex-col  pb-8 items-center text-center h-full">
+                    {/* Timeline Dot */}
+                    <div className="w-12 h-12 mb-4 rounded-full bg-tali-lime flex items-center justify-center text-lg font-bold text-tali-purple-dark shadow-lg z-20 flex-shrink-0 relative">
+                      {index + 1}
+                    </div>
+                    {/* Desktop Card with Fixed Dimensions */}
+                    <div className="w-full flex-1 flex flex-col">
+                      <div className="bg-white/10 rounded-2xl p-6 shadow-lg backdrop-blur-md border border-white/20 hover:border-white/30 hover:bg-white/15 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col min-h-[200px]">
+                        <h4 className="text-xl font-bold text-tali-lime mb-3 flex-shrink-0">{value.title}</h4>
+                        <p className="text-white/90 leading-relaxed text-sm flex-1">{value.description}</p>
                       </div>
                     </div>
                   </div>
@@ -256,6 +283,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
+      
     </section>
   );
 };
