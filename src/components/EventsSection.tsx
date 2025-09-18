@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import amr1 from "@/assets/artists/amrdiab/amr3.jpg";
@@ -157,14 +157,6 @@ const EventsSection = () => {
     setIsDragging(false);
   };
 
-  // Auto-carousel effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((c) => (c + 1) % upcomingEvents.length);
-    }, 3000); // 3 seconds
-    return () => clearInterval(interval);
-  }, [upcomingEvents.length]);
-
   // Generate confetti dots only once
   const confettiDots = useMemo(() => {
     return [...Array(30)].map((_, i) => (
@@ -223,7 +215,7 @@ const EventsSection = () => {
           {confettiDots}
         </div>
       </div>
-      <div className="container mx-auto max-w-7xl section-content relative z-10">
+      <div className="container mx-auto max-w-6xl section-content relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
@@ -232,10 +224,12 @@ const EventsSection = () => {
         </div>
         <div className="relative z-10">
           {/* Carousel */}
-          <div className="relative max-w-2xl mx-auto mb-16">
-            <div 
-              className="overflow-hidden rounded-3xl shadow-2xl relative bg-[#1a0e3a] cursor-grab active:cursor-grabbing select-none" 
-              style={{height: '420px', maxHeight: '90vw'}}
+          <div className="relative max-w-6xl sm:max-w-3xl mx-auto mb-16 px-1 sm:px-0">
+            <div
+              className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[250px] sm:h-[360px] md:h-[400px]"
+              style={{
+                boxShadow: "0 8px 32px 0 rgba(205,255,107,0.10)",
+              }}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
@@ -244,36 +238,26 @@ const EventsSection = () => {
               onMouseUp={onMouseUp}
               onMouseLeave={onMouseLeave}
             >
-              <img
-                src={upcomingEvents[current].image}
-                alt={upcomingEvents[current].title}
-                className={`w-full h-full object-cover rounded-3xl`
-                  + (upcomingEvents[current].artist.name === 'Myriam Fares' ? ' object-top' : '')
-                  + (upcomingEvents[current].artist.name === 'Yara Tarek' || upcomingEvents[current].artist.name === 'Pawsa' ? ' object-[center_20%]' : '')
-                  + (upcomingEvents[current].artist.name === 'Yoyaku' ? ' object-[center_20%]' : '')
-                }
-                style={{
-                  height: '100%',
-                  minHeight: 320,
-                  objectPosition:
-                    upcomingEvents[current].artist.name === 'Yara Tarek'
-                      ? 'center 85%'
-                      : upcomingEvents[current].artist.name === 'Myriam Fares'
-                      ? 'top'
-                      : upcomingEvents[current].artist.name === 'Yoyaku'
-                      ? 'center 80%'
-                      : 'center',
-                }}
-              />
-              {/* Artist avatar */}
-              <div className="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 rounded-full px-3 py-1 shadow-lg">
-                
-                <span className="text-white font-semibold text-sm">{upcomingEvents[current].artist.name}</span>
+              {/* Edge-to-edge background image with overlay */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={upcomingEvents[current].image}
+                  alt={upcomingEvents[current].title}
+                  className={`w-full h-full object-cover scale-105 ${upcomingEvents[current].artist.name === "Myriam Fares" ? "" : "group-hover:scale-110"}`}
+                  style={{ objectPosition: upcomingEvents[current].artist.name === "Myriam Fares" ? "center 2%" : upcomingEvents[current].artist.name === "YOYAKU" ? "center 10%" : "center" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#371990] to-transparent p-6">
-                <h3 className="text-2xl font-bold mb-1">{upcomingEvents[current].title}</h3>
-                <span className="bg-tali-lime text-[#371990] font-bold px-3 py-1 rounded-full text-xs mr-2">{upcomingEvents[current].date}</span>
-                <p className="mt-2 text-sm opacity-90">{upcomingEvents[current].desc}</p>
+              
+              {/* Artist avatar */}
+              <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex items-center space-x-2 bg-white/20 rounded-full px-2 sm:px-3 py-1 shadow-lg">
+                
+                <span className="text-white font-semibold text-xs sm:text-sm">{upcomingEvents[current].artist.name}</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#371990] to-transparent p-3 sm:p-6">
+                <h3 className="text-lg sm:text-2xl font-bold mb-1">{upcomingEvents[current].title}</h3>
+                <span className="bg-tali-lime text-[#371990] font-bold px-2 sm:px-3 py-1 rounded-full text-xs mr-2">{upcomingEvents[current].date}</span>
+                <p className="mt-2 text-xs sm:text-sm opacity-90">{upcomingEvents[current].desc}</p>
               </div>
               {/* Swipe indicator */}
               {upcomingEvents.length > 1 && (

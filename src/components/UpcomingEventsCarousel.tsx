@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-
-const SLIDE_INTERVAL = 3500;
+import React, { useState } from "react";
 
 const UpcomingEventsCarousel = ({ events }) => {
   const [current, setCurrent] = useState(0);
@@ -9,20 +7,10 @@ const UpcomingEventsCarousel = ({ events }) => {
   const [mouseStart, setMouseStart] = useState(null);
   const [mouseEnd, setMouseEnd] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
-  const timeoutRef = useRef(null);
 
   // Navigation functions
   const next = () => setCurrent((prev) => (prev + 1) % events.length);
   const prev = () => setCurrent((prev) => (prev - 1 + events.length) % events.length);
-
-  // Auto-advance carousel
-  useEffect(() => {
-    if (events.length <= 1) return;
-    timeoutRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % events.length);
-    }, SLIDE_INTERVAL);
-    return () => clearTimeout(timeoutRef.current);
-  }, [current, events.length]);
 
   // Swipe/drag functionality
   const minSwipeDistance = 50;
@@ -31,10 +19,6 @@ const UpcomingEventsCarousel = ({ events }) => {
   const onTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
-    // Pause auto-advance when user interacts
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
   };
 
   const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
@@ -57,10 +41,6 @@ const UpcomingEventsCarousel = ({ events }) => {
     setMouseEnd(null);
     setMouseStart(e.clientX);
     setIsDragging(true);
-    // Pause auto-advance when user interacts
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
   };
 
   const onMouseMove = (e) => {
@@ -98,10 +78,10 @@ const UpcomingEventsCarousel = ({ events }) => {
   const event = events[current];
 
   return (
-    <div className="flex justify-center mb-10 sm:mb-16 w-full px-4 sm:px-0">
-      <div className="relative w-full max-w-2xl">
+    <div className="flex justify-center mb-10 sm:mb-16 w-full px-1 sm:px-4">
+      <div className="relative w-full max-w-6xl sm:max-w-2xl">
         <div
-          className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[300px] sm:h-[360px] md:h-[400px]"
+          className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[250px] sm:h-[360px] md:h-[400px]"
           style={{
             boxShadow: "0 8px 32px 0 rgba(205,255,107,0.10)",
           }}
@@ -119,7 +99,7 @@ const UpcomingEventsCarousel = ({ events }) => {
             src={event.img}
             alt={event.title}
             className={`w-full h-full object-cover scale-105 ${event.artist === "Myriam Fares" ? "" : "group-hover:scale-110"}`}
-            style={{ objectPosition: event.artist === "Myriam Fares" ? "center 2%" : event.artist === "Yoyaku" ? "70% center" : "center" }}
+            style={{ objectPosition: event.artist === "Myriam Fares" ? "center 2%" : event.artist === "Yoyaku" ? "center 20%" : "center" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90" />
         </div>
