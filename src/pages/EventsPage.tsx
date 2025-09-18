@@ -22,7 +22,8 @@ import wegz from "@/assets/artists/wegz/wegz.jpg";
 import yara1 from "@/assets/artists/yaratarek/yara1.jpg";
 import yara2 from "@/assets/artists/yaratarek/yara2.jpg";
 import yara3 from "@/assets/artists/yaratarek/yara3.jpg";
-import yoyaku1 from "@/assets/artists/yoyaku/y2.png";
+
+import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
 import thatgirl from "@/assets/artists/thatgirlsherryk/t1.jpg";
 import kz from "@/assets/artists/kzandcake/k1.jpg";
 
@@ -242,7 +243,7 @@ const EventsPage = () => {
           >
             EVENTS
           </div>
-          <div className="container mx-auto max-w-7xl px-0 sm:px-4">
+          <div className="container mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
             <h2
               className="text-5xl font-extrabold text-tali-lime text-center mb-12 pt-20 tracking-tight drop-shadow-lg relative z-10"
               style={{
@@ -274,7 +275,7 @@ const EventsPage = () => {
             />
             {/* Previous Events Heading */}
             <h3
-              className="text-3xl md:text-4xl font-extrabold text-tali-lime mb-8 text-start tracking-tight drop-shadow-lg"
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-tali-lime mb-6 sm:mb-8 text-start tracking-tight drop-shadow-lg"
               style={{
                 fontFamily: "Red Hat Display, Montserrat, Poppins, sans-serif",
                 letterSpacing: "0.1em",
@@ -284,11 +285,11 @@ const EventsPage = () => {
               Previous Events
             </h3>
             {/* Previous Events Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10">
               {filtered.filter(
                 (e) => e.date < new Date().toISOString().slice(0, 10)
               ).length === 0 ? (
-                <div className="col-span-full text-center text-white/70 text-xl py-16">
+                <div className="col-span-full text-center text-white/70 text-lg sm:text-xl py-12 sm:py-16">
                   No previous events.
                 </div>
               ) : (
@@ -298,7 +299,7 @@ const EventsPage = () => {
                   .map((event, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70  flex flex-col min-h-[360px]"
+                      className="group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col min-h-[280px] sm:min-h-[320px] lg:min-h-[360px]"
                       style={{
                         boxShadow: "0 8px 32px 0 rgba(205,255,107,0.10)",
                       }}
@@ -308,15 +309,17 @@ const EventsPage = () => {
                         <img
                           src={event.img}
                           alt={event.title}
-                          className="w-full h-full object-cover scale-105 group-hover:scale-110 "
+                          className={`w-full h-full object-cover scale-105 ${event.artist === "Myriam Fares" ? "" : "group-hover:scale-110"}`}
+                          style={{ objectPosition: event.artist === "Myriam Fares" ? "center 2%" : event.artist === "Yoyaku" ? "70% center" : "center" }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90" />
                       </div>
                       {/* Top left date badge */}
-                      <div className="absolute top-6 left-6 z-10 px-4 py-0.5 rounded-xl bg-white/20 backdrop-blur-md border border-tali-lime/40 text-tali-lime font-bold text-base shadow-lg flex items-center gap-2 animate-fadeInUp max-w-[60%] truncate">
+                      <div className="absolute top-3 left-3 sm:top-4 lg:top-6 sm:left-4 lg:left-6 z-10 px-2 py-1 sm:px-3 lg:px-4 sm:py-1 lg:py-0.5 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md border border-tali-lime/40 text-tali-lime font-bold text-sm sm:text-base shadow-lg flex items-center gap-1 sm:gap-2 max-w-[60%] truncate">
                         <svg
-                          width="18"
-                          height="18"
+                          width="16"
+                          height="16"
+                          className="sm:w-[18px] sm:h-[18px]"
                           fill="none"
                           viewBox="0 0 24 24"
                         >
@@ -347,7 +350,7 @@ const EventsPage = () => {
                           href="https://human-figures.jointali.com/event/81/PHXYOYAKU"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute top-6 right-6 z-10 px-4 py-1 rounded-xl bg-tali-lime/90 text-[#1a1333] font-bold text-base shadow-lg animate-fadeInUp max-w-[60%] truncate hover:bg-[#d4ff3f] transition-colors duration-200"
+                          className="absolute top-3 right-3 sm:top-4 lg:top-6 sm:right-4 lg:right-6 z-10 px-2 py-1 sm:px-3 lg:px-4 sm:py-1 lg:py-1 rounded-lg sm:rounded-xl bg-tali-lime/90 text-[#1a1333] font-bold text-sm sm:text-base shadow-lg max-w-[50%] sm:max-w-[60%] truncate hover:bg-[#d4ff3f]"
                           style={{
                             fontFamily:
                               "Red Hat Display, Montserrat, Poppins, sans-serif",
@@ -358,7 +361,7 @@ const EventsPage = () => {
                         </a>
                       ) : (
                         <div
-                          className="absolute top-6 right-6 z-10 px-4 py-0.5 rounded-xl bg-tali-lime/90 text-[#1a1333] font-bold text-base shadow-lg flex items-center gap-2 animate-fadeInUp max-w-[60%] truncate"
+                          className="absolute top-3 right-3 sm:top-4 lg:top-6 sm:right-4 lg:right-6 z-10 px-2 py-1 sm:px-3 lg:px-4 sm:py-1 lg:py-0.5 rounded-lg sm:rounded-xl bg-tali-lime/90 text-[#1a1333] font-bold text-sm sm:text-base shadow-lg flex items-center gap-1 sm:gap-2 animate-fadeInUp max-w-[50%] sm:max-w-[60%] truncate"
                           style={{
                             fontFamily:
                               "Red Hat Display, Montserrat, Poppins, sans-serif",
@@ -368,9 +371,9 @@ const EventsPage = () => {
                         </div>
                       )}
                       {/* Main content: event title and description with new layout */}
-                      <div className="relative z-10 flex-1 flex flex-col justify-end pb-8 pt-24 px-8 overflow-visible">
+                      <div className="relative z-10 flex-1 flex flex-col justify-end pb-4 sm:pb-6 lg:pb-8 pt-16 sm:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8 overflow-visible">
                         <h3
-                          className="text-2xl font-extrabold text-white mb-1 drop-shadow-lg text-left"
+                          className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white mb-1 drop-shadow-lg text-left"
                           style={{
                             fontFamily:
                               "Red Hat Display, Montserrat, Poppins, sans-serif",
@@ -380,9 +383,9 @@ const EventsPage = () => {
                         >
                           {event.title}
                         </h3>
-                        <div className="w-10 h-1 bg-tali-lime rounded-full mb-2 ml-0" />
+                        <div className="w-8 sm:w-10 h-1 bg-tali-lime rounded-full mb-2 ml-0" />
                         <p
-                          className="text-white/80 text-sm font-normal text-left mb-2 max-w-full"
+                          className="text-white/80 text-xs sm:text-sm font-normal text-left mb-2 max-w-full"
                           style={{
                             fontFamily: "Montserrat, Poppins, sans-serif",
                             lineHeight: 1.5,

@@ -245,6 +245,94 @@ const monthsShort = ["JUL", "AUG", "SEPT", "OCT"];
 
 const ScheduleSection = () => {
   const [selectedMonth, setSelectedMonth] = useState(months[0]);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [mouseStart, setMouseStart] = useState(null);
+  const [mouseEnd, setMouseEnd] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Month navigation functions
+  const nextMonth = () => {
+    const currentIndex = months.indexOf(selectedMonth);
+    // Only advance if not at the last month
+    if (currentIndex < months.length - 1) {
+      setSelectedMonth(months[currentIndex + 1]);
+    }
+  };
+
+  const prevMonth = () => {
+    const currentIndex = months.indexOf(selectedMonth);
+    // Only go back if not at the first month
+    if (currentIndex > 0) {
+      setSelectedMonth(months[currentIndex - 1]);
+    }
+  };
+
+  // Check if we can navigate in each direction
+  const canGoNext = months.indexOf(selectedMonth) < months.length - 1;
+  const canGoPrev = months.indexOf(selectedMonth) > 0;
+
+  // Swipe/drag functionality
+  const minSwipeDistance = 50;
+
+  // Touch events
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    // Only allow navigation if we can move in that direction
+    if (isLeftSwipe && canGoNext) {
+      nextMonth();
+    } else if (isRightSwipe && canGoPrev) {
+      prevMonth();
+    }
+  };
+
+  // Mouse events for desktop
+  const onMouseDown = (e) => {
+    setMouseEnd(null);
+    setMouseStart(e.clientX);
+    setIsDragging(true);
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    setMouseEnd(e.clientX);
+  };
+
+  const onMouseUp = () => {
+    if (!mouseStart || !mouseEnd || !isDragging) {
+      setIsDragging(false);
+      return;
+    }
+    
+    const distance = mouseStart - mouseEnd;
+    const isLeftDrag = distance > minSwipeDistance;
+    const isRightDrag = distance < -minSwipeDistance;
+
+    // Only allow navigation if we can move in that direction
+    if (isLeftDrag && canGoNext) {
+      nextMonth();
+    } else if (isRightDrag && canGoPrev) {
+      prevMonth();
+    }
+    
+    setIsDragging(false);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+  };
+
   const events = allEvents
     .filter(e => e.month === selectedMonth)
     .sort((a, b) => {
@@ -318,17 +406,29 @@ const ScheduleSection = () => {
             ))}
           </div>
         </div>
-        {/* Events Grid */}
-        {events.length === 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="col-span-full flex flex-col items-center justify-center py-20">
-              <svg width="36" height="36" fill="none" viewBox="0 0 24 24" className="mb-3 text-tali-text-secondary"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" opacity="0.15"/></svg>
-              <div className="text-base text-tali-text-secondary text-center">No events scheduled for this month.</div>
+        {/* Events Grid with Swipe Functionality */}
+        <div 
+          className="cursor-grab active:cursor-grabbing select-none"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseLeave}
+        >
+         
+          
+          {events.length === 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="col-span-full flex flex-col items-center justify-center py-20">
+                <svg width="36" height="36" fill="none" viewBox="0 0 24 24" className="mb-3 text-tali-text-secondary"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" opacity="0.15"/></svg>
+                <div className="text-base text-tali-text-secondary text-center">No events scheduled for this month.</div>
+              </div>
             </div>
-          </div>
-        ) : (
-          events.length <= 2 ? (
-            <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 flex-wrap">
+          ) : (
+            events.length <= 2 ? (
+              <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 flex-wrap">
               {events.map((event, index) => (
                 <div key={index} className="group cursor-pointer flex justify-center w-full sm:w-auto" style={{maxWidth: 400}}>
                   <div className="card-glass rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 flex flex-col w-full sm:w-[350px] min-w-0 max-w-[400px] h-auto min-h-[320px] sm:min-h-[370px] sm:h-[370px]">
@@ -432,8 +532,8 @@ const ScheduleSection = () => {
                 </div>
               ))}
             </div>
-          )
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );

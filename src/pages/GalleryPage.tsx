@@ -98,6 +98,13 @@ const GallerySection: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const delay = 3500;
 
+  // Swipe/drag state
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [mouseStart, setMouseStart] = useState(null);
+  const [mouseEnd, setMouseEnd] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   // Carousel auto-play
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -110,6 +117,73 @@ const GallerySection: React.FC = () => {
   // Navigation
   const prev = () => setCurrent((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
   const next = () => setCurrent((prev) => (prev + 1) % galleryImages.length);
+
+  // Swipe/drag functionality
+  const minSwipeDistance = 50;
+
+  // Touch events
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    // Pause auto-advance when user interacts
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+  };
+
+  // Mouse events for desktop
+  const onMouseDown = (e) => {
+    setMouseEnd(null);
+    setMouseStart(e.clientX);
+    setIsDragging(true);
+    // Pause auto-advance when user interacts
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    setMouseEnd(e.clientX);
+  };
+
+  const onMouseUp = () => {
+    if (!mouseStart || !mouseEnd || !isDragging) {
+      setIsDragging(false);
+      return;
+    }
+    
+    const distance = mouseStart - mouseEnd;
+    const isLeftDrag = distance > minSwipeDistance;
+    const isRightDrag = distance < -minSwipeDistance;
+
+    if (isLeftDrag) {
+      next();
+    } else if (isRightDrag) {
+      prev();
+    }
+    
+    setIsDragging(false);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#1a1333]">
@@ -146,7 +220,16 @@ const GallerySection: React.FC = () => {
             <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-tali-lime/80 text-white text-3xl rounded-full w-8 h-6 pb-1 flex items-center justify-center z-20 shadow-lg transition-colors duration-200">
               &#8592;
             </button>
-            <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-white/10 flex items-center justify-center">
+            <div 
+              className="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-white/10 flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseLeave}
+            >
               <img
                 src={galleryImages[current]}
                 alt={`Gallery ${current + 1}`}
@@ -159,7 +242,7 @@ const GallerySection: React.FC = () => {
             </button>
           </div>
           {/* Creative thumbnail preview dots */}
-          <div className="flex gap-3 mt-8 justify-center items-center mb-40">
+          <div className="flex gap-3 mt-8 justify-center items-center mb-8">
             {galleryImages.map((img, idx) => (
               <button
                 key={idx}
@@ -173,6 +256,13 @@ const GallerySection: React.FC = () => {
                 <img src={img} alt={`thumb ${idx + 1}`} className="w-full h-full object-cover" />
               </button>
             ))}
+          </div>
+          
+          {/* Swipe instruction */}
+          <div className="text-center mb-32">
+            <p className="text-white/60 text-sm font-medium" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              Swipe, drag, or click thumbnails to navigate
+            </p>
           </div>
         </div>
         <style>{`

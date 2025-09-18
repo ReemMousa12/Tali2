@@ -8,6 +8,7 @@ import yara from "@/assets/artists/yaratarek/yara3.jpg";
 import wegz from "@/assets/artists/wegz/wegz.jpg";
 import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
 
+
 import hotsince1 from "@/assets/artists/hotsince'82/h2.jpg";
 import caiiro1 from "@/assets/artists/caiiro/c2.jpg";
 import playhaus from "@/assets/artists/playhaus/p1.jpg";
@@ -88,8 +89,73 @@ const hotEvents = [
 
 const EventsSection = () => {
   const [current, setCurrent] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [mouseStart, setMouseStart] = useState(null);
+  const [mouseEnd, setMouseEnd] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   const next = () => setCurrent((c) => (c + 1) % upcomingEvents.length);
   const prev = () => setCurrent((c) => (c - 1 + upcomingEvents.length) % upcomingEvents.length);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  // Touch events
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+  };
+
+  // Mouse events for desktop
+  const onMouseDown = (e) => {
+    setMouseEnd(null);
+    setMouseStart(e.clientX);
+    setIsDragging(true);
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    setMouseEnd(e.clientX);
+  };
+
+  const onMouseUp = () => {
+    if (!mouseStart || !mouseEnd || !isDragging) {
+      setIsDragging(false);
+      return;
+    }
+    
+    const distance = mouseStart - mouseEnd;
+    const isLeftDrag = distance > minSwipeDistance;
+    const isRightDrag = distance < -minSwipeDistance;
+
+    if (isLeftDrag) {
+      next();
+    } else if (isRightDrag) {
+      prev();
+    }
+    
+    setIsDragging(false);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+  };
 
   // Auto-carousel effect
   useEffect(() => {
@@ -167,7 +233,17 @@ const EventsSection = () => {
         <div className="relative z-10">
           {/* Carousel */}
           <div className="relative max-w-2xl mx-auto mb-16">
-            <div className="overflow-hidden rounded-3xl shadow-2xl relative bg-[#1a0e3a]" style={{height: '420px', maxHeight: '90vw'}}>
+            <div 
+              className="overflow-hidden rounded-3xl shadow-2xl relative bg-[#1a0e3a] cursor-grab active:cursor-grabbing select-none" 
+              style={{height: '420px', maxHeight: '90vw'}}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseLeave}
+            >
               <img
                 src={upcomingEvents[current].image}
                 alt={upcomingEvents[current].title}
@@ -199,17 +275,20 @@ const EventsSection = () => {
                 <span className="bg-tali-lime text-[#371990] font-bold px-3 py-1 rounded-full text-xs mr-2">{upcomingEvents[current].date}</span>
                 <p className="mt-2 text-sm opacity-90">{upcomingEvents[current].desc}</p>
               </div>
+              {/* Swipe indicator */}
+              {upcomingEvents.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                  {upcomingEvents.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`w-2 h-2 rounded-full ${
+                        idx === current ? 'bg-tali-lime' : 'bg-white/40'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-            {upcomingEvents.length > 1 && (
-              <>
-                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full py-1 px-2 shadow-lg transition-colors duration-200">
-                  &#8592;
-                </button>
-                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-tali-lime text-white hover:text-[#371990] rounded-full py-1 px-2 shadow-lg transition-colors duration-200">
-                  &#8594;
-                </button>
-              </>
-            )}
           </div>
           {/* Hot Events */}
           <h3 className="text-2xl font-bold mb-6 text-tali-lime text-center">Hot Events</h3>
@@ -223,8 +302,8 @@ const EventsSection = () => {
                   <img
                     src={event.image}
                     alt={event.title}
-                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
-                    style={{objectPosition:  (event.artist.name === 'Myriam Fares') ? 'top' : (event.artist.name === 'wegz') ? 'center 35%' : 'center 35%'}}
+                    className={`object-cover w-full h-full group-hover:scale-110 ${event.artist.name === 'Myriam Fares' ? '' : 'transition-transform duration-300'}`}
+                    style={{objectPosition:  (event.artist.name === 'Myriam Fares') ? 'top' : (event.artist.name === 'YOYAKU') ? '10% center' : (event.artist.name === 'wegz') ? 'center 35%' : 'center 35%'}}
                   />
                   {/* Artist avatar */}
                   <div className="absolute top-4 right-4 flex items-center space-x-2 bg-white/20 rounded-full px-3 py-1 shadow-lg">
@@ -260,7 +339,7 @@ const EventsSection = () => {
           <div className="flex justify-center mt-12 pt-4 ">
             <Link
               to="/events"
-              className="inline-block bg-tali-lime text-[#371990] font-bold pt-2 px-14 py-3 rounded-full shadow-lg hover:bg-[#d4ff3f] transition-colors duration-200 text-lg"
+              className="inline-block bg-tali-lime text-[#371990] font-bold pt-2 px-14 py-3 rounded-full shadow-lg hover:bg-[#d4ff3f] transition-colors duration-200 text-lg flex items-center justify-center gap-2"
               style={{ minWidth: '220px', textAlign: 'center' }}
             >
               Explore More Events
