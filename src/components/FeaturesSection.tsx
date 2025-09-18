@@ -83,11 +83,11 @@ const FeaturesSection = () => {
 										)}
 									</div>
 									{/* Card */}
-									<div className="ml-8 flex-1 bg-white/10 rounded-2xl p-8 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.03] transition-transform duration-300">
-										<h3 className="text-2xl font-bold text-tali-text-primary mb-4 group-hover:text-tali-lime transition-colors">
+									<div className="ml-8 flex-1 bg-white/10 rounded-2xl p-4 md:p-8 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.03] transition-transform duration-300">
+										<h3 className="text-lg md:text-2xl font-bold text-tali-text-primary mb-2 md:mb-4 group-hover:text-tali-lime transition-colors">
 											{feature.title}
 										</h3>
-										<p className="text-tali-text-secondary leading-relaxed text-lg">
+										<p className="text-tali-text-secondary leading-relaxed text-sm md:text-lg">
 											{feature.description}
 										</p>
 									</div>

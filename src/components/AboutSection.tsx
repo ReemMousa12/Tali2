@@ -244,8 +244,8 @@ const AboutSection = () => {
                       {index + 1}
                     </div>
                     <div className={isUp ? "mb-6 w-full" : "mt-6 w-full"}>
-                      <div className="bg-white/10 rounded-2xl p-4 md:p-6 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.04] transition-transform duration-300 w-full sm:max-w-xs sm:border-2 sm:shadow-2xl sm:bg-white/20 sm:p-8 sm:rounded-3xl xs:w-full xs:mx-0 xs:mb-6 xs:border-l-4 xs:border-tali-lime xs:rounded-lg xs:shadow-md xs:bg-white/20">
-                        <h4 className="text-lg md:text-2xl font-bold text-tali-lime mb-2">{value.title}</h4>
+                      <div className="bg-white/10 rounded-2xl p-3 md:p-6 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.04] transition-transform duration-300 w-full sm:max-w-xs sm:border-2 sm:shadow-2xl sm:bg-white/20 sm:p-8 sm:rounded-3xl xs:w-full xs:mx-0 xs:mb-6 xs:border-l-4 xs:border-tali-lime xs:rounded-lg xs:shadow-md xs:bg-white/20">
+                        <h4 className="text-lg md:text-2xl font-bold text-tali-lime mb-1 md:mb-2">{value.title}</h4>
                         <p className="text-tali-text-secondary leading-relaxed text-xs md:text-base">{value.description}</p>
                       </div>
                     </div>
