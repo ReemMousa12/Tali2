@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import background from '../assets/background/1.jpg';
 
 const features= [
@@ -22,6 +23,35 @@ const features= [
 ];
 
 const FeaturesSection = () => {
+	const [visibleFeatures, setVisibleFeatures] = useState(new Set());
+	const [hoveredFeature, setHoveredFeature] = useState(null);
+	const featuresRef = useRef(null);
+
+	// Scroll-triggered animations for features section
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						// Trigger staggered animations for feature cards sliding from right
+						features.forEach((_, index) => {
+							setTimeout(() => {
+								setVisibleFeatures(prev => new Set([...prev, index]));
+							}, index * 200);
+						});
+					}
+				});
+			},
+			{ threshold: 0.3 }
+		);
+
+		if (featuresRef.current) {
+			observer.observe(featuresRef.current);
+		}
+
+		return () => observer.disconnect();
+	}, []);
+
 	return (
 		<section
 			id="features"
@@ -69,30 +99,48 @@ const FeaturesSection = () => {
 					</h2>
 				</div>
 						{/* Features Timeline */}
-						<div className="relative flex flex-col items-center mb-5 max-w-3xl mx-auto">
+						<div ref={featuresRef} className="relative flex flex-col items-center mb-5 max-w-3xl mx-auto">
 							<div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-tali-lime/60 to-tali-lime/0 z-0" style={{transform: 'translateX(-50%)'}} />
-							{features.map((feature, index) => (
-								<div key={index} className="relative z-10 flex items-center w-full mb-16 last:mb-0">
-									{/* Timeline Dot */}
-									<div className="flex flex-col items-center w-1/12 min-w-[60px]">
-										<div className="w-12 h-12 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-2xl font-bold text-tali-purple-dark shadow-lg border-4 border-white/30">
-											{feature.number}
+							{features.map((feature, index) => {
+								const isVisible = visibleFeatures.has(index);
+								const isHovered = hoveredFeature === index;
+								return (
+									<div 
+										key={index} 
+										className="relative z-10 flex items-center w-full mb-16 last:mb-0"
+										onMouseEnter={() => setHoveredFeature(index)}
+										onMouseLeave={() => setHoveredFeature(null)}
+									>
+										{/* Timeline Dot - Static, no animation */}
+										<div className="flex flex-col items-center w-1/12 min-w-[60px]">
+											<div className="w-12 h-12 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-2xl font-bold text-tali-purple-dark shadow-lg border-4 border-white/30">
+												{feature.number}
+											</div>
+											{index < features.length - 1 && (
+												<div className="flex-1 w-1 bg-gradient-to-b from-tali-lime/60 to-tali-lime/0 my-2" style={{minHeight: '40px'}} />
+											)}
 										</div>
-										{index < features.length - 1 && (
-											<div className="flex-1 w-1 bg-gradient-to-b from-tali-lime/60 to-tali-lime/0 my-2" style={{minHeight: '40px'}} />
-										)}
+										{/* Card - Slides from right */}
+										<div className={`ml-8 flex-1 bg-white/10 rounded-2xl p-4 md:p-8 shadow-xl backdrop-blur-md border border-tali-lime/20 transition-all duration-700 ${
+											isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+										} ${isHovered ? 'scale-[1.03] border-tali-lime/40 bg-white/15' : 'hover:scale-[1.02]'}`}
+										style={{ transitionDelay: `${index * 200}ms` }}>
+											<h3 className={`text-lg md:text-2xl font-bold text-tali-text-primary mb-2 md:mb-4 transition-colors duration-300 ${
+												isHovered ? 'text-tali-lime' : 'group-hover:text-tali-lime'
+											}`}>
+												{feature.title}
+											</h3>
+											<p className="text-tali-text-secondary leading-relaxed text-sm md:text-lg">
+												{feature.description}
+											</p>
+											{/* Animated accent line */}
+											<div className={`mt-4 h-1 bg-gradient-to-r from-tali-lime to-transparent rounded-full transition-all duration-500 ${
+												isVisible ? 'w-16 opacity-100' : 'w-0 opacity-0'
+											}`} style={{ transitionDelay: `${index * 200 + 300}ms` }} />
+										</div>
 									</div>
-									{/* Card */}
-									<div className="ml-8 flex-1 bg-white/10 rounded-2xl p-4 md:p-8 shadow-xl backdrop-blur-md border border-tali-lime/20 group hover:scale-[1.03] transition-transform duration-300">
-										<h3 className="text-lg md:text-2xl font-bold text-tali-text-primary mb-2 md:mb-4 group-hover:text-tali-lime transition-colors">
-											{feature.title}
-										</h3>
-										<p className="text-tali-text-secondary leading-relaxed text-sm md:text-lg">
-											{feature.description}
-										</p>
-									</div>
-								</div>
-							))}
+								);
+							})}
 						</div>
 			</div>
 		</section>

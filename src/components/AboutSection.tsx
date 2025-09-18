@@ -1,7 +1,12 @@
 
+import { useState, useEffect, useRef } from 'react';
 import one from "@/assets/background/8.jpg";
 
 const AboutSection = () => {
+  const [visibleCards, setVisibleCards] = useState(new Set());
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const valuesRef = useRef(null);
+
   const values = [
     {
       title: "Precision",
@@ -20,6 +25,31 @@ const AboutSection = () => {
       description: "Pioneering the future of booking technology. We continuously push boundaries to create solutions that don't just meet needs — they anticipate them."
     }
   ];
+
+  // Scroll-triggered animations for values section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Trigger staggered animations for cards sliding from right
+            values.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleCards(prev => new Set([...prev, index]));
+              }, index * 200);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (valuesRef.current) {
+      observer.observe(valuesRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -230,50 +260,67 @@ const AboutSection = () => {
             ></div>
          
           {/* Mobile & Desktop: Values Cards */}
-          <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-6 w-full pt-12 max-w-4xl md:max-w-7xl mx-auto z-10">
+          <div ref={valuesRef} className="relative flex flex-col md:flex-row items-center justify-center gap-8 md:gap-8 w-full pt-12 max-w-4xl md:max-w-7xl mx-auto z-10">
             {/* Desktop: Horizontal Timeline Line - Goes through numbered circles */}
             <div className="hidden md:block absolute h-0.5 bg-gradient-to-r from-tali-lime/60 via-tali-lime/40 to-tali-lime/60 z-0" style={{
               top: '72px', // pt-12 (48px) + half circle height (24px) = 72px
-              left: '0',
-              right: '0',
-              maxWidth: '85%',
+              left: '10%',
+              right: '10%',
+              maxWidth: '80%',
               margin: '0 auto'
             }} />
             
             {/* Mobile: Vertical Timeline Line */}
-            <div className="md:hidden absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-tali-lime via-tali-lime/60 to-transparent z-0" />
+            <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-tali-lime via-tali-lime/60 to-transparent z-0" />
             
             {values.map((value, index) => {
+              const isVisible = visibleCards.has(index);
+              const isHovered = hoveredCard === index;
               return (
-                <div key={index} className="relative flex-1 w-full max-w-sm mx-auto md:mx-0 mb-8 md:mb-0 md:min-h-[280px] md:flex md:flex-col">
+                <div 
+                  key={index} 
+                  className="relative flex-1 w-full max-w-sm mx-auto md:mx-0 mb-8 md:mb-0 md:min-h-[300px] md:flex md:flex-col md:items-center"
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
                   {/* Mobile: Vertical Card with Side Timeline */}
                   <div className="md:hidden flex items-start gap-4">
-                    {/* Timeline Dot */}
-                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-xl font-bold text-tali-purple-dark shadow-xl border-4 border-white/20 z-10">
+                    {/* Timeline Dot - Static, no animation */}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-tali-lime to-tali-lime-bright flex items-center justify-center text-xl font-bold text-tali-purple-dark shadow-xl border-4 border-white/20 z-10">
                       {index + 1}
                     </div>
-                    {/* Mobile Card */}
-                    <div className="flex-1">
-                      <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg rounded-2xl p-6 shadow-2xl border border-white/20 hover:border-tali-lime/40 transition-all duration-300 hover:scale-[1.02]">
+                    {/* Mobile Card - Slides from right */}
+                    <div className={`flex-1 transition-all duration-700 ${
+                      isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+                    }`} style={{ transitionDelay: `${index * 150}ms` }}>
+                      <div className={`bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg rounded-2xl p-6 shadow-2xl border border-white/20 transition-all duration-300 ${
+                        isHovered ? 'border-tali-lime/40 scale-[1.02]' : 'hover:border-tali-lime/40 hover:scale-[1.02]'
+                      }`}>
                         <h4 className="text-xl font-bold text-tali-lime mb-3">{value.title}</h4>
                         <p className="text-white/90 leading-relaxed text-sm">{value.description}</p>
                         {/* Mobile: Accent line */}
-                        <div className="w-12 h-1 bg-tali-lime rounded-full mt-4"></div>
+                        <div className={`h-1 bg-tali-lime rounded-full mt-4 transition-all duration-500 ${
+                          isVisible ? 'w-12 opacity-100' : 'w-0 opacity-0'
+                        }`} style={{ transitionDelay: `${index * 150 + 300}ms` }}></div>
                       </div>
                     </div>
                   </div>
 
                   {/* Desktop: Horizontal Card Layout with Fixed Height */}
-                  <div className="hidden md:flex flex-col  pb-8 items-center text-center h-full">
-                    {/* Timeline Dot */}
-                    <div className="w-12 h-12 mb-4 rounded-full bg-tali-lime flex items-center justify-center text-lg font-bold text-tali-purple-dark shadow-lg z-20 flex-shrink-0 relative">
+                  <div className="hidden md:flex flex-col items-center text-center h-full w-full">
+                    {/* Timeline Dot - Static, no animation */}
+                    <div className="w-12 h-12 mb-6 rounded-full bg-tali-lime flex items-center justify-center text-lg font-bold text-tali-purple-dark shadow-lg z-20 flex-shrink-0 relative">
                       {index + 1}
                     </div>
-                    {/* Desktop Card with Fixed Dimensions */}
-                    <div className="w-full flex-1 flex flex-col">
-                      <div className="bg-white/10 rounded-2xl p-6 shadow-lg backdrop-blur-md border border-white/20 hover:border-white/30 hover:bg-white/15 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col min-h-[200px]">
-                        <h4 className="text-xl font-bold text-tali-lime mb-3 flex-shrink-0">{value.title}</h4>
-                        <p className="text-white/90 leading-relaxed text-sm flex-1">{value.description}</p>
+                    {/* Desktop Card with Fixed Dimensions - Slides from right */}
+                    <div className={`w-full flex-1 flex flex-col max-w-xs transition-all duration-700 ${
+                      isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+                    }`} style={{ transitionDelay: `${index * 150}ms` }}>
+                      <div className={`bg-white/10 rounded-2xl p-6 shadow-lg backdrop-blur-md border border-white/20 transition-all duration-300 h-full flex flex-col min-h-[200px] ${
+                        isHovered ? 'border-white/30 bg-white/15 scale-[1.02]' : 'hover:border-white/30 hover:bg-white/15 hover:scale-[1.02]'
+                      }`}>
+                        <h4 className="text-xl font-bold text-tali-lime mb-3 flex-shrink-0 text-center">{value.title}</h4>
+                        <p className="text-white/90 leading-relaxed text-sm flex-1 text-center">{value.description}</p>
                       </div>
                     </div>
                   </div>
