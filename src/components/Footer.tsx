@@ -1,5 +1,5 @@
 import logo from "../assets/logo/logo_colored.png";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import subheaderBg from "../assets/background/subheader.jpg";
 
@@ -95,10 +95,18 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 text-center">
+        <div className="border-t border-white/10 pt-8 text-center flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-tali-text-secondary">
             © 2025 Tali Moments. All rights reserved.
           </p>
+          <div className="flex items-center gap-4 justify-center">
+            <a href="https://www.instagram.com/join_tali/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram className="w-6 h-6 text-tali-lime hover:text-white transition-colors" />
+            </a>
+            <a href="https://www.linkedin.com/company/jointali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin className="w-6 h-6 text-tali-lime hover:text-white transition-colors" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
