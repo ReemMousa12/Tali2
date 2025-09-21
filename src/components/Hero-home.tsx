@@ -8,7 +8,7 @@ const HeroSection = () => {
   const [showThankYou, setShowThankYou] = useState(false);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: '#371990' }}>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12" style={{ background: '#371990' }}>
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -32,14 +32,12 @@ const HeroSection = () => {
             className="block mb-1 md:mb-2"
             style={{
               color: '#ffffffff',
-              
-          fontFamily: "'Montserrat', 'Poppins', 'Inter', 'Arial', sans-serif",   
+              fontFamily: "'Montserrat', 'Poppins', 'Inter', 'Arial', sans-serif",   
               fontWeight: 900,
-              fontSize: '6rem',
+              fontSize: 'clamp(3rem, 8vw, 6rem)',
               letterSpacing: '-0.04em',
               lineHeight: 1,
               marginRight: '0.03em',
-            
               position: 'relative'
             }}
           >
@@ -47,15 +45,13 @@ const HeroSection = () => {
             <span
               style={{
                 position: 'absolute',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.5rem, 1vw, 1rem)',
                 color: '#ffffffff',
                 fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
                 fontWeight: 400,
                 opacity: 0.85,
-                paddingTop: '4.5rem',
+                paddingTop: 'clamp(2.5rem, 6vw, 4.5rem)',
                 paddingLeft: '2px'
-              
-              
               }}
             >
               ®
@@ -67,14 +63,14 @@ const HeroSection = () => {
               fontFamily: "'Playfair Display', 'Baskerville', serif",
               fontStyle: "italic",
               letterSpacing: "0.03em",
-              fontSize: '5.5rem',
+              fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
               lineHeight: 1.1
             }}
           >MOMENTS</span>
           <div className="absolute h-[2px] w-[80%] bg-gradient-to-r from-transparent via-lime-400 to-transparent left-[10%] -bottom-4"></div>
         </h1>
         
-        <p className="text-xl md:text-2xl text-tali-text-secondary max-w-4xl mx-auto mb-12 leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-tali-text-secondary max-w-4xl mx-auto mb-6 md:mb-12 leading-relaxed px-2">
          Tali Moments brings elegance and ease to every booking — from dining to events.
           <br className="hidden md:block" />
           we make every reservation seamless, every experience unforgettable.
@@ -97,7 +93,7 @@ const HeroSection = () => {
             form.reset();
             setTimeout(() => setShowThankYou(false), 4000);
           }}
-          className="flex items-center justify-center w-full max-w-md mx-auto mt-6"
+          className="flex items-center justify-center w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto mt-4 sm:mt-6 px-2"
         >
           <div className="relative flex-1">
             <input
@@ -105,17 +101,17 @@ const HeroSection = () => {
               name="email"
               required
               placeholder="Email"
-              className="peer w-full pr-32 pl-4 py-3 rounded-3xl border-2 border-lime-400 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:border-lime-500 transition-colors duration-200 shadow-md"
+              className="peer w-full pr-16 sm:pr-32 pl-3 sm:pl-4 py-2 sm:py-3 rounded-3xl border-2 border-lime-400 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:border-lime-500 transition-colors duration-200 shadow-md text-sm sm:text-base"
             />
             <button
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-lime-500 hover:bg-lime-400 text-white font-semibold rounded-3xl px-6 py-1 shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-300"
+              className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 bg-lime-500 hover:bg-lime-400 text-white font-semibold rounded-3xl px-2 sm:px-6 py-1 text-xs sm:text-base shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-300"
             >
               Sign Up
             </button>
             <fieldset className="absolute inset-0 pointer-events-none border-2 border-lime-400 rounded-3xl" aria-hidden="true"></fieldset>
             {showThankYou && (
-              <div className="absolute left-0 -bottom-6 text-lime-300 text-sm font-medium animate-fade-in">
+              <div className="absolute left-0 -bottom-6 text-lime-300 text-xs sm:text-sm font-medium animate-fade-in">
                 Thank you for signing up!
               </div>
             )}
