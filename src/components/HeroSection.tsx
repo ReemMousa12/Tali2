@@ -47,7 +47,7 @@ const HeroSection = () => {
             style={{
               fontFamily: "'Playfair Display', 'Baskerville', serif",
               fontStyle: "italic",
-              letterSpacing: "0.03em",
+              letterSpacing: "0.05em",
               fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
               lineHeight: 1.1
             }}
@@ -62,7 +62,11 @@ const HeroSection = () => {
         </p>
         
         <Link to="/solutions">
-          <Button variant="lime" size="lg" className="text-lg px-8 py-3 h-auto rounded-xl font-medium shadow-lg hover:shadow-xl transition-all">
+          <Button 
+            variant="lime" 
+            size="lg" 
+            className="text-sm sm:text-base md:text-lg px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 h-auto rounded-lg sm:rounded-xl font-medium shadow-lg hover:shadow-xl transition-all"
+          >
             DISCOVER SOLUTIONS
           </Button>
         </Link>
