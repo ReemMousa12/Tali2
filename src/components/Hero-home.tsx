@@ -29,33 +29,18 @@ const HeroSection = () => {
       <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
         <h1 className="mb-8 relative">
           <span 
-            className="block mb-1 md:mb-2"
+            className="text-tali-text-primary block mb-1 md:mb-2"
             style={{
-              color: '#ffffffff',
-              fontFamily: "'Montserrat', 'Poppins', 'Inter', 'Arial', sans-serif",   
-              fontWeight: 900,
+              fontWeight: 500,
               fontSize: 'clamp(3rem, 8vw, 6rem)',
-              letterSpacing: '-0.04em',
+              letterSpacing: '0.04em',
               lineHeight: 1,
               marginRight: '0.03em',
               position: 'relative'
             }}
           >
-            Tali
-            <span
-              style={{
-                position: 'absolute',
-                fontSize: 'clamp(0.5rem, 1vw, 1rem)',
-                color: '#ffffffff',
-                fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
-                fontWeight: 400,
-                opacity: 0.85,
-                paddingTop: 'clamp(2.5rem, 6vw, 4.5rem)',
-                paddingLeft: '2px'
-              }}
-            >
-              ®
-            </span>
+            TALI
+          
           </span>
           <span 
             className="text-gradient-lime hero-glow block relative italic" 
@@ -101,11 +86,11 @@ const HeroSection = () => {
               name="email"
               required
               placeholder="Email"
-              className="peer w-full pr-16 sm:pr-32 pl-3 sm:pl-4 py-2 sm:py-3 rounded-3xl border-2 border-lime-400 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:border-lime-500 transition-colors duration-200 shadow-md text-sm sm:text-base"
+              className="peer w-full pr-20 sm:pr-32 pl-3 sm:pl-4 py-2 sm:py-3 rounded-3xl border-2 border-lime-400 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:border-lime-500 transition-colors duration-200 shadow-md text-sm sm:text-base"
             />
             <button
               type="submit"
-              className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 bg-lime-500 hover:bg-lime-400 text-white font-semibold rounded-3xl px-2 sm:px-6 py-1 text-xs sm:text-base shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-300"
+              className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-lime-500 hover:bg-lime-400 text-white font-semibold rounded-3xl px-3 sm:px-6 py-1 text-xs sm:text-base shadow transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-300"
             >
               Sign Up
             </button>
