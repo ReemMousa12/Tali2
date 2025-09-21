@@ -78,7 +78,7 @@ const UpcomingEventsCarousel = ({ events }) => {
   const event = events[current];
 
   return (
-    <div className="flex justify-center mb-10 sm:mb-16 w-full px-1 sm:px-4">
+    <div className="flex justify-center mb-10 sm:mb-16 w-full  sm:px-4">
       <div className="relative w-full max-w-6xl sm:max-w-2xl">
         <div
           className="group relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/10 hover:border-tali-lime/70 flex flex-col cursor-grab active:cursor-grabbing select-none w-full h-[250px] sm:h-[360px] md:h-[400px]"
@@ -98,8 +98,8 @@ const UpcomingEventsCarousel = ({ events }) => {
           <img
             src={event.img}
             alt={event.title}
-            className={`w-full h-full object-cover scale-105 ${event.artist === "Myriam Fares" ? "" : "group-hover:scale-110"}`}
-            style={{ objectPosition: event.artist === "Myriam Fares" ? "center 2%" : event.artist === "Yoyaku" ? "center 20%" : "center" }}
+            className={`w-full h-full object-cover ${event.artist === "Myriam Fares" ? "" : "group-hover:scale-110"}`}
+            style={{ objectPosition: event.artist === "Myriam Fares" ? "center 2%" : event.artist === "Yoyaku" ? "center 10%" : "center" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90" />
         </div>

@@ -3,6 +3,7 @@ import entertainmentImg from "@/assets/entertainment.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
 import corporateImg from "@/assets/corporate.jpg";
 import bg4 from "@/assets/background/4.jpg";
+import FloatingCircles from "@/components/FloatingCircles";
 
 const SolutionsSection = () => {
   const solutions = [

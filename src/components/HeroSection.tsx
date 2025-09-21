@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-dj.jpg";
+import FloatingCircles from "@/components/FloatingCircles";
 
 const HeroSection = () => {
   return (
@@ -19,6 +20,11 @@ const HeroSection = () => {
       
       {/* Geometric Overlay */}
       <div className="absolute inset-0 geometric-overlay" />
+      
+      {/* Floating Circles */}
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        <FloatingCircles />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">

@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import ScheduleSection from "../components/ScheduleSection";
 import UpcomingEventsCarousel from "../components/UpcomingEventsCarousel";
 import { useState } from "react";
+import FloatingCircles from '../components/FloatingCircles';
 import bg2 from "@/assets/background/3.jpg";
 import event1 from "@/assets/event1.jpg";
 import event2 from "@/assets/event2.jpg";
@@ -217,6 +218,9 @@ const EventsPage = () => {
       }}
     >
       <Header />
+      <div className="absolute inset-0 pointer-events-none">
+        <FloatingCircles />
+      </div>
       <main className="flex-1">
         {/* Events Grid with Filters */}
         <section className="relative py-10 px-2 sm:px-4 overflow-hidden">
@@ -253,26 +257,31 @@ const EventsPage = () => {
               All Events
             </h2>
            
-            <div>
-              {/* Upcoming Events Heading */}
-              <h3
-                className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-tali-lime mb-6 sm:mb-8 text-start tracking-tight drop-shadow-lg"
-                style={{
-                  fontFamily:
-                    "Red Hat Display, Montserrat, Poppins, sans-serif",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Upcoming Events
-              </h3>
-            </div>
-            {/* Upcoming Events Carousel */}
-            <UpcomingEventsCarousel
-              events={filtered
-                .filter((e) => e.date >= new Date().toISOString().slice(0, 10))
-                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())}
-            />
+            {/* Upcoming Events Section - Only shown if there are upcoming events */}
+            {filtered.filter(e => e.date >= new Date().toISOString().slice(0, 10)).length > 0 && (
+              <>
+                <div>
+                  {/* Upcoming Events Heading */}
+                  <h3
+                    className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-tali-lime mb-6 sm:mb-8 text-start tracking-tight drop-shadow-lg"
+                    style={{
+                      fontFamily:
+                        "Red Hat Display, Montserrat, Poppins, sans-serif",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Upcoming Events
+                  </h3>
+                </div>
+                {/* Upcoming Events Carousel */}
+                <UpcomingEventsCarousel
+                  events={filtered
+                    .filter((e) => e.date >= new Date().toISOString().slice(0, 10))
+                    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())}
+                />
+              </>
+            )}
             {/* Previous Events Heading */}
             <h3
               className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-tali-lime mb-6 sm:mb-8 text-start tracking-tight drop-shadow-lg"

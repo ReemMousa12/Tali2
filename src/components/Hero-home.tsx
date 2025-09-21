@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/background/8.jpg";
 import React, { useState } from "react";
+import FloatingCircles from "@/components/FloatingCircles";
 
 const HeroSection = () => {
   const [showThankYou, setShowThankYou] = useState(false);
@@ -16,18 +17,61 @@ const HeroSection = () => {
           // filter: 'brightness(0.4) saturate(1.2)'
         }}
       />
-      
-  {/* Overlay */}
-  <div className="absolute inset-0 z-0" style={{ background: 'rgba(55,25,144,0.65)' }} />
-      
+      {/* Overlay */}
+      <div className="absolute inset-0 z-0" style={{ background: 'rgba(55,25,144,0.65)' }} />
       {/* Geometric Overlay */}
       <div className="absolute inset-0 geometric-overlay" />
-      
+      {/* Floating Circles (z-10, above overlays) */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <FloatingCircles />
+      </div>
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-        <h1 className="text-7xl md:text-9xl font-bold mb-8">
-          <span className="text-tali-text-primary block">   TALI </span>
-          <span className="text-gradient-lime hero-glow block">MOMENTS</span>
+      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
+        <h1 className="mb-8 relative">
+          <span 
+            className="block mb-1 md:mb-2"
+            style={{
+              color: '#ffffffff',
+              
+          fontFamily: "'Montserrat', 'Poppins', 'Inter', 'Arial', sans-serif",   
+              fontWeight: 900,
+              fontSize: '6rem',
+              letterSpacing: '-0.04em',
+              lineHeight: 1,
+              marginRight: '0.03em',
+            
+              position: 'relative'
+            }}
+          >
+            Tali
+            <span
+              style={{
+                position: 'absolute',
+                fontSize: '1rem',
+                color: '#ffffffff',
+                fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
+                fontWeight: 400,
+                opacity: 0.85,
+                paddingTop: '4.5rem',
+                paddingLeft: '2px'
+              
+              
+              }}
+            >
+              ®
+            </span>
+          </span>
+          <span 
+            className="text-gradient-lime hero-glow block relative italic" 
+            style={{
+              fontFamily: "'Playfair Display', 'Baskerville', serif",
+              fontStyle: "italic",
+              letterSpacing: "0.03em",
+              fontSize: '5.5rem',
+              lineHeight: 1.1
+            }}
+          >MOMENTS</span>
+          <div className="absolute h-[2px] w-[80%] bg-gradient-to-r from-transparent via-lime-400 to-transparent left-[10%] -bottom-4"></div>
         </h1>
         
         <p className="text-xl md:text-2xl text-tali-text-secondary max-w-4xl mx-auto mb-12 leading-relaxed">

@@ -19,33 +19,6 @@ import playhaus from "@/assets/artists/playhaus/p1.jpg";
 
 
 const upcomingEvents = [
-  {
-    title: "Myriam Fares at KIKI’s White",
-    date: "Sep 19 | 09:00 PM",
-    image: myriam,
-    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
-    artist: { name: 'Myriam Fares', image: myriam }
-  },
-  {
-    title: "Yoyaku 10th Anniversary Showcase",
-    date: "Oct 9, 2025 | 7:00 PM",
-    image: yoyaku1,
-    desc: "Yoyaku celebrates 10 years in Cairo! Join O.bee B2B Toman Station, Mari.te, Zeina, and Hermit B2B Joey for a special night at The Warehouse, Cairo Business Park. Early Bird: 1500 EGP. Doors open 7 PM.",
-    artist: { name: 'YOYAKU', image: yoyaku1 },
-    bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
-  },
- 
-];
-
-
-const hotEvents = [
-  {
-    title: "Myriam Fares at KIKI’s White",
-    date: "Sep 19 | 09:00 PM",
-    image: myriam,
-    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
-    artist: { name: 'Myriam Fares', image: myriam }
-  },
    {
     title: "Yoyaku 10th Anniversary Showcase",
     date: "Oct 9, 2025 | 7:00 PM",
@@ -54,6 +27,35 @@ const hotEvents = [
     artist: { name: 'YOYAKU', image: yoyaku1 },
     bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
   },
+  {
+    title: "Myriam Fares at KIKI’s White",
+    date: "Sep 19 | 09:00 PM",
+    image: myriam,
+    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
+    artist: { name: 'Myriam Fares', image: myriam }
+  },
+ 
+ 
+];
+
+
+const hotEvents = [
+   {
+    title: "Yoyaku 10th Anniversary Showcase",
+    date: "Oct 9, 2025 | 7:00 PM",
+    image: yoyaku1,
+    desc: "Yoyaku celebrates 10 years in Cairo! Join O.bee B2B Toman Station, Mari.te, Zeina, and Hermit B2B Joey for a special night at The Warehouse, Cairo Business Park. Early Bird: 1500 EGP. Doors open 7 PM.",
+    artist: { name: 'YOYAKU', image: yoyaku1 },
+    bookUrl: "https://human-figures.jointali.com/event/81/PHXYOYAKU"
+  },
+  {
+    title: "Myriam Fares at KIKI’s White",
+    date: "Sep 19 | 09:00 PM",
+    image: myriam,
+    desc: "Sep 19 | 09:00 PM\nKIKI’s Beach, Hacienda White. A magical evening with Myriam Fares, full of energy and dance.",
+    artist: { name: 'Myriam Fares', image: myriam }
+  },
+  
    {
     title: "PLAYHAUS Showcase ft. Laidlaw",
     date: "Aug 16, 2025 | 3:00 PM",
@@ -304,15 +306,13 @@ const EventsSection = () => {
                     {event.title}
                   </h4>
                   <p className="mb-4 text-sm opacity-90 flex-1">{event.desc}</p>
-                  {(event.artist.name === 'Myriam Fares' || event.artist.name === 'YOYAKU') && (
-                    <a
-                      href={event.artist.name === 'Myriam Fares'
-                        ? "https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI%27S+WHITE"
-                        : event.bookUrl}
+                  
+                  {event.artist.name === 'YOYAKU' && event.bookUrl && new Date('2025-10-09') > new Date() && (
+                    <a 
+                      href={event.bookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-auto bg-tali-lime text-[#371990] font-bold px-4 py-2 rounded-lg shadow hover:bg-[#d4ff3f] transition-colors duration-200 text-center"
-                      style={{ display: 'inline-block' }}
+                      className="bg-tali-lime text-[#371990] font-bold px-4 py-2 rounded-xl shadow-md hover:bg-[#d4ff3f] transition-colors duration-200 text-center w-full"
                     >
                       Book Now
                     </a>

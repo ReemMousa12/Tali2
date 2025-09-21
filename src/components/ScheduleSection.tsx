@@ -207,7 +207,7 @@ const allEvents = [
     time: "09:00 PM",
     venue: "KIKI’s Beach, Hacienda White",
     image: myriam,
-    bookUrl: "https://kikis.jointali.com/event/1331/FRI+19.09+%7C+MYRIAM+FARES+%7C+KIKI'S+WHITE"
+  
   },
   {
     month: "OCTOBER",
@@ -451,7 +451,7 @@ const ScheduleSection = () => {
                       <div className="absolute top-4 left-4 bg-tali-lime text-tali-purple-dark px-3 py-1 rounded-full text-sm font-semibold">
                         {event.date}
                       </div>
-                      {(event.title === 'Yoyaku 10th Anniversary Showcase' || event.title === 'Myriam Fares at KIKI’s White') && event.bookUrl && (
+                      {(event.title === 'Yoyaku 10th Anniversary Showcase' ) && event.bookUrl && (
                         <a
                           href={event.bookUrl}
                           target="_blank"
