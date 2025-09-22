@@ -256,6 +256,10 @@ const EventsPage = () => {
             >
               All Events
             </h2>
+            {/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={18} />
+      </div>
            
             {/* Upcoming Events Section - Only shown if there are upcoming events */}
             {filtered.filter(e => e.date >= new Date().toISOString().slice(0, 10)).length > 0 && (

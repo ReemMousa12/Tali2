@@ -5,6 +5,7 @@ import event3 from "@/assets/event3.jpg";
 import myriam from "@/assets/artists/Myriamfares/myriam.jpg";
 import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
 import background from '../assets/background/1.jpg';
+import FloatingCircles from './FloatingCircles';
 
 // KIKI's schedule artists
 import notredame1 from '@/assets/artists/NOTREDAME/N1.jpg';
@@ -389,6 +390,10 @@ const ScheduleSection = () => {
             <span className="text-tali-lime font-semibold">02</span> Schedule
           </h2>
         </div>
+        {/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={15} />
+      </div>
         {/* Month Navigation */}
         <div className="flex justify-center mb-10 sm:mb-16">
           <div className="flex space-x-4 sm:space-x-8 overflow-x-auto">

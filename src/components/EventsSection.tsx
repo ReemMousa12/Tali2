@@ -12,6 +12,7 @@ import yoyaku1 from "@/assets/artists/yoyaku/y3.png";
 import hotsince1 from "@/assets/artists/hotsince'82/h2.jpg";
 import caiiro1 from "@/assets/artists/caiiro/c2.jpg";
 import playhaus from "@/assets/artists/playhaus/p1.jpg";
+import FloatingCircles from './FloatingCircles';
 
 
 
@@ -179,6 +180,10 @@ const EventsSection = () => {
 
   return (
     <section className="relative py-28 text-white overflow-hidden" style={{background: '#371990'}}>
+      
+      
+
+      
       {/* Background Headline */}
       <div
         className="background-headline wm wow slideInUp animated"
@@ -202,7 +207,7 @@ const EventsSection = () => {
           pointerEvents: 'none',
           userSelect: 'none',
           top: 0,
-          zIndex: 0,
+          zIndex: 1,
         }}
       >
         EVENTS
@@ -224,6 +229,10 @@ const EventsSection = () => {
             <span className="text-tali-lime font-semibold">01</span> Events
           </h2>
         </div>
+{/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={8} />
+      </div>
         <div className="relative z-10">
           {/* Carousel */}
           <div className="flex justify-center mb-10 sm:mb-16 w-full px-1 sm:px-4">
@@ -279,8 +288,15 @@ const EventsSection = () => {
           </div>
           </div>
           {/* Hot Events */}
-          <h3 className="text-2xl font-bold mb-6 text-tali-lime text-center">Hot Events</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="relative">
+            {/* Floating circles for hot events section */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <FloatingCircles numberOfCircles={10} />
+            </div>
+            
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-6 text-tali-lime text-center">Hot Events</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {hotEvents.map((event, idx) => (
               <div
                 key={idx}
@@ -321,15 +337,18 @@ const EventsSection = () => {
               </div>
             ))}
           </div>
-          {/* Explore More Button */}
-          <div className="flex justify-center mt-12 pt-4 ">
-            <Link
-              to="/events"
-              className="inline-block bg-tali-lime text-[#371990] font-bold pt-2 px-14 py-3 rounded-full shadow-lg hover:bg-[#d4ff3f] transition-colors duration-200 text-lg flex items-center justify-center gap-2"
-              style={{ minWidth: '220px', textAlign: 'center' }}
-            >
-              Explore More Events
-            </Link>
+            </div>
+            
+            {/* Explore More Button */}
+            <div className="flex justify-center mt-12 pt-4 ">
+              <Link
+                to="/events"
+                className="inline-block bg-tali-lime text-[#371990] font-bold pt-2 px-14 py-3 rounded-full shadow-lg hover:bg-[#d4ff3f] transition-colors duration-200 text-lg flex items-center justify-center gap-2"
+                style={{ minWidth: '220px', textAlign: 'center' }}
+              >
+                Explore More Events
+              </Link>
+            </div>
           </div>
         </div>
       </div>

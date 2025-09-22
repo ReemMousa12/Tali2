@@ -24,7 +24,7 @@ const floatingKeyframes = `
   100% { transform: translateY(0); }
 }`;
 
-const FloatingCircles = ({ className = "z-10", numberOfCircles = 8 }) => {
+const FloatingCircles = ({ className = "z-10", numberOfCircles = 12 }) => {
   useEffect(() => {
     // Inject keyframes into the document head once
     if (!document.getElementById('floating-circles-keyframes')) {
@@ -38,14 +38,15 @@ const FloatingCircles = ({ className = "z-10", numberOfCircles = 8 }) => {
   return (
     <div className={`absolute inset-0 pointer-events-none ${className}`}>
       {Array.from({ length: numberOfCircles }).map((_, i) => {
-        // Create a grid pattern for more even distribution
+        // Create a flexible grid pattern based on number of circles
         const size = getRandomInt(18, 36);
-        // Calculate position in a grid (4 columns, 2 rows)
-        const column = i % 4; // 0 to 3
-        const row = Math.floor(i / 4); // 0 to 1
+        const columns = Math.ceil(Math.sqrt(numberOfCircles)); // Dynamic columns based on number
+        const rows = Math.ceil(numberOfCircles / columns); // Dynamic rows
+        const column = i % columns;
+        const row = Math.floor(i / columns);
         // Add slight randomness within each grid cell
-        const left = (column * 25) + getRandomInt(5, 15); // 25% width per column
-        const top = (row * 40) + getRandomInt(10, 25); // 40% height per row
+        const left = (column * (100 / columns)) + getRandomInt(2, (100 / columns) - 10); 
+        const top = (row * (100 / rows)) + getRandomInt(2, (100 / rows) - 10);
         const color = circleColors[i % circleColors.length];
         const duration = 2.5 + Math.random() * 2.5; // 2.5s to 5s
         const delay = Math.random() * 2; // 0s to 2s

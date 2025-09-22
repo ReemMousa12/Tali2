@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import one from "@/assets/background/8.jpg";
+import FloatingCircles from './FloatingCircles';
 
 const AboutSection = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
@@ -92,6 +93,10 @@ const AboutSection = () => {
       <div className="container mx-auto max-w-7xl section-content">
         {/* Who We Are */}
         <div className="text-center mb-32 pt-8">
+          {/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={15} />
+      </div>
           <div>
            
             <h3 className="text-2xl md:text-5xl font-bold mb-3 text-tali-lime ">

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import background from '../assets/background/1.jpg';
+import FloatingCircles from './FloatingCircles';
 
 const features= [
 	{
@@ -98,6 +99,10 @@ const FeaturesSection = () => {
 						<span className="text-tali-lime font-semibold">02</span> Features
 					</h2>
 				</div>
+				{/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={8} />
+      </div>
 						{/* Features Timeline */}
 						<div ref={featuresRef} className="relative flex flex-col items-center mb-5 max-w-3xl mx-auto">
 							<div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-tali-lime/60 to-tali-lime/0 z-0" style={{transform: 'translateX(-50%)'}} />

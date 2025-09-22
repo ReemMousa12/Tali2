@@ -87,6 +87,10 @@ const SolutionsSection = () => {
         <h2 className="text-4xl md:text-6xl font-bold pt-4">
 						<span className="text-tali-lime font-semibold">01</span> Our Solutions
 					</h2>        </div>
+          {/* Floating Circles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <FloatingCircles numberOfCircles={8} />
+      </div>
 
         {/* Solutions Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-20">
