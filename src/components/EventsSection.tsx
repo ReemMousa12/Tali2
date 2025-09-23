@@ -215,8 +215,6 @@ const EventsSection = () => {
       {/* Party vibe background: colored light rays and confetti (static, not affected by carousel) */}
       <div className="pointer-events-none absolute inset-0 z-0">
         {/* Light rays */}
-        <div className="absolute left-1/4 top-0 w-1/2 h-full bg-gradient-to-br from-tali-lime/30 via-pink-500/10 to-transparent rotate-12 blur-2xl" />
-        <div className="absolute right-0 top-1/3 w-1/3 h-1/2 bg-gradient-to-tl from-pink-500/20 via-tali-lime/10 to-transparent -rotate-12 blur-2xl" />
         {/* Confetti dots */}
         <div className="absolute inset-0">
           {confettiDots}

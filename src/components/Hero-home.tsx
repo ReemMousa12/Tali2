@@ -2,131 +2,146 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/background/8.jpg";
 import React, { useState, useEffect } from "react";
-import FloatingCircles from "@/components/FloatingCircles";
+
 
 // Import videos
-import video1 from "@/assets/videos/1.mp4";
+import video1 from "@/assets/videos/5.mp4";
 import video2 from "@/assets/videos/2.mp4";
 import video3 from "@/assets/videos/3.mp4";
 
 const HeroSection = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [videosLoaded, setVideosLoaded] = useState<boolean[]>([false, false, false]);
+  const [allVideosReady, setAllVideosReady] = useState(false);
   
   const videos = [video1, video2, video3];
   const headlines = ["EXPERIENCE", "VIBES", "LIVE THE BEAT"];
 
+  // Handle video loading
+  const handleVideoLoad = (index: number) => {
+    setVideosLoaded(prev => {
+      const newState = [...prev];
+      newState[index] = true;
+      return newState;
+    });
+  };
+
+  // Check if all videos are loaded
   useEffect(() => {
+    if (videosLoaded.every(loaded => loaded)) {
+      setAllVideosReady(true);
+    }
+  }, [videosLoaded]);
+
+  useEffect(() => {
+    // Only start the interval when all videos are loaded to prevent lag
+    if (!allVideosReady) return;
+    
     const interval = setInterval(() => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
     }, 10000); // Change video every 10 seconds
 
     return () => clearInterval(interval);
-  }, [videos.length]);
+  }, [videos.length, allVideosReady]);
 
   useEffect(() => {
-    // Inject dynamic concert-style animations
-    if (!document.getElementById('concert-hero-animations')) {
+    // Inject elegant and creative animations
+    if (!document.getElementById('elegant-hero-animations')) {
       const style = document.createElement('style');
-      style.id = 'concert-hero-animations';
+      style.id = 'elegant-hero-animations';
       style.innerHTML = `
-        @keyframes concertPulse {
-          0%, 100% { 
-            transform: scale(1); 
-            text-shadow: 0 0 20px rgba(205,255,107,0.6), 0 0 40px rgba(205,255,107,0.4), 0 0 60px rgba(205,255,107,0.2);
-          }
-          50% { 
-            transform: scale(1.02); 
-            text-shadow: 0 0 30px rgba(205,255,107,0.8), 0 0 60px rgba(205,255,107,0.6), 0 0 90px rgba(205,255,107,0.4);
-          }
-        }
-        @keyframes neonFlicker {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-          75% { opacity: 0.9; }
-        }
-        @keyframes rhythmBounce {
-          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-          40% { transform: translateY(-8px); }
-          60% { transform: translateY(-4px); }
-        }
-        @keyframes waveText {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          25% { transform: translateY(-5px) rotate(1deg); }
-          50% { transform: translateY(-8px) rotate(0deg); }
-          75% { transform: translateY(-3px) rotate(-1deg); }
-        }
-        @keyframes energyGlow {
-          0%, 100% { 
-            background: linear-gradient(45deg, #cdff6b, #ff6b9d, #6bcfff, #ff6bcd);
-            background-size: 400% 400%;
-            background-position: 0% 50%;
-          }
-          50% { 
-            background-position: 100% 50%;
-          }
-        }
-        @keyframes headlineChange {
-          0%, 90% { opacity: 1; transform: translateY(0); }
-          95% { opacity: 0; transform: translateY(-10px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInFromRight {
-          0% { opacity: 0; transform: translateX(100px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideOutToLeft {
-          0% { opacity: 1; transform: translateX(0); }
-          100% { opacity: 0; transform: translateX(-100px); }
-        }
-        @keyframes smoothSlideTransition {
-          0%, 85% { 
-            opacity: 1; 
-            transform: translateX(0) scale(1); 
-          }
-          90% { 
-            opacity: 0; 
-            transform: translateX(-50px) scale(0.95); 
-          }
-          95% { 
-            opacity: 0; 
-            transform: translateX(50px) scale(0.95); 
-          }
-          100% { 
-            opacity: 1; 
-            transform: translateX(0) scale(1); 
-          }
-        }
-        @keyframes smoothSlideIn {
+        @keyframes elegantFadeUp {
           0% { 
             opacity: 0; 
-            transform: translateX(60px) scale(0.9); 
+            transform: translateY(40px) scale(0.95);
+            filter: blur(4px);
           }
           100% { 
             opacity: 1; 
-            transform: translateX(0) scale(1); 
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
           }
         }
-        @keyframes smoothSlideOut {
-          0% { 
-            opacity: 1; 
-            transform: translateX(0) scale(1); 
-          }
-          100% { 
-            opacity: 0; 
-            transform: translateX(-60px) scale(0.9); 
-          }
-        }
-        @keyframes chicLineGlow {
+        
+        @keyframes dynamicGlow {
           0%, 100% { 
-            width: 60px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.1), 0 0 40px rgba(205,255,107,0.2);
+            transform: scale(1);
+          }
+          50% { 
+            text-shadow: 0 0 30px rgba(255,255,255,0.2), 0 0 60px rgba(205,255,107,0.3);
+            transform: scale(1.02);
+          }
+        }
+        
+        @keyframes creativeSlide {
+          0% { 
+            opacity: 0;
+            transform: translateX(-100px) rotate(-2deg);
+            filter: blur(3px);
+          }
+          60% {
             opacity: 0.8;
-            box-shadow: 0 0 10px rgba(205,255,107,0.6);
+            transform: translateX(10px) rotate(0.5deg);
+            filter: blur(1px);
+          }
+          100% { 
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+            filter: blur(0px);
+          }
+        }
+        
+        @keyframes modernPulse {
+          0%, 100% { 
+            width: 50px;
+            opacity: 0.7;
+            background: linear-gradient(90deg, transparent, #cdff6b, transparent);
+          }
+          50% { 
+            width: 150px;
+            opacity: 1;
+            background: linear-gradient(90deg, transparent, #cdff6b, #ffffff, #cdff6b, transparent);
+          }
+        }
+        
+        @keyframes floatingElements {
+          0%, 100% { 
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0.6;
+          }
+          33% { 
+            transform: translateY(-20px) rotate(1deg);
+            opacity: 0.8;
+          }
+          66% { 
+            transform: translateY(-10px) rotate(-0.5deg);
+            opacity: 0.9;
+          }
+        }
+        
+        @keyframes sophisticatedTransition {
+          0% { 
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: blur(0px) hue-rotate(0deg);
+          }
+          25% { 
+            opacity: 0.7;
+            transform: scale(1.05) rotate(0.5deg);
+            filter: blur(2px) hue-rotate(15deg);
+          }
+          75% { 
+            opacity: 0.3;
+            transform: scale(0.95) rotate(-0.5deg);
+            filter: blur(4px) hue-rotate(-15deg);
           }
           50% { 
             width: 80px;
             opacity: 1;
-            box-shadow: 0 0 20px rgba(205,255,107,0.9), 0 0 40px rgba(205,255,107,0.4);
+            transform: scale(1) rotate(0deg);
+            filter: blur(0px) hue-rotate(0deg);
           }
         }
       `;
@@ -154,7 +169,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 sm:pt-12 pb-0" style={{ background: '#371990' }}>
+    <section id="home" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 sm:pt-12 pb-0" style={{ background: '#371990' }}>
       {/* Video Background Banner */}
       <div className="absolute inset-0 z-0">
         {videos.map((video, index) => (
@@ -167,13 +182,21 @@ const HeroSection = () => {
             muted
             loop
             playsInline
+            preload="auto"
+            onLoadedData={() => handleVideoLoad(index)}
+            onCanPlay={() => handleVideoLoad(index)}
+            style={{
+              willChange: 'opacity',
+              transform: 'translateZ(0)', // Force hardware acceleration
+              backfaceVisibility: 'hidden', // Optimize rendering
+            }}
           >
             <source src={video} type="video/mp4" />
           </video>
         ))}
       </div>
       {/* Overlay */}
-      <div className="absolute inset-0 z-5" style={{ background: 'rgba(55,25,144,0.5)' }} />
+      <div className="absolute inset-0 z-5" style={{ background: 'rgba(55,25,144,0.4)' }} />
       {/* Geometric Overlay */}
       <div className="absolute inset-0 geometric-overlay z-5" />
       {/* Video indicators */}
@@ -181,91 +204,61 @@ const HeroSection = () => {
         {videos.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentVideo ? 'bg-lime-400' : 'bg-white/40'
+            className={`relative group transition-all duration-500 ${
+              index === currentVideo ? 'scale-110' : 'hover:scale-105'
             }`}
             onClick={() => setCurrentVideo(index)}
-          />
+          >
+            <div className={`w-8 h-0.5 rounded-full transition-all duration-500 ${
+              index === currentVideo 
+                ? 'bg-lime-400 shadow-lg shadow-lime-400/50' 
+                : 'bg-white/30 group-hover:bg-white/50'
+            }`} />
+            {index === currentVideo && (
+              <div className="absolute inset-0 bg-lime-400/20 rounded-full blur-sm animate-pulse" />
+            )}
+          </button>
         ))}
       </div>
-     
-      {/* Floating Circles (z-10, above overlays) - Extended to bottom */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <FloatingCircles numberOfCircles={6} />
-      </div>
-      {/* Additional floating circles for bottom area */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none">
-        <FloatingCircles numberOfCircles={6} />
-      </div>
-      {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
-        {/* Animated Concert-Style Headline */}
-        <div className="mb-8 relative overflow-hidden">
-          {/* Dynamic subtitle with wave effect */}
+
+      {/* Elegant Content Container */}
+      <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
+        {/* Sophisticated Header */}
+        <div className="mb-16 relative">
+          {/* Elegant Subtitle */}
+         
+
+          {/* Dynamic Creative Headline */}
           <div className="relative">
             <h1 
               key={currentVideo}
-              className="text-lime-400 font-bold tracking-widest relative"
+              className="text-white font-extralight relative mb-8"
               style={{
-                fontSize: 'clamp(2rem, 6vw, 4rem)',
-                fontFamily: "'Montserrat', sans-serif",
-                animation: 'neonFlicker 4s ease-in-out infinite, smoothSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                textShadow: '0 0 15px rgba(205,255,107,0.9), 0 0 30px rgba(205,255,107,0.6)',
-                letterSpacing: '0.3em',
+                fontSize: 'clamp(3rem, 8vw, 6rem)',
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                fontWeight: '200',
+                animation: 'creativeSlide 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), dynamicGlow 4s ease-in-out infinite 2s',
+                letterSpacing: '-0.02em',
+                lineHeight: '0.9',
+                background: 'linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #cdff6b 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
-              {headlines[currentVideo].split('').map((letter, index) => (
-                <span
-                  key={`${currentVideo}-${index}`}
-                  className="inline-block"
-                  style={{
-                    animation: `waveText 2s ease-in-out infinite, smoothSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    animationDelay: `${index * 0.1}s, ${index * 0.03}s`,
-                  }}
-                >
-                  {letter === ' ' ? '\u00A0' : letter}
-                </span>
-              ))}
+              {headlines[currentVideo]}
             </h1>
-            
-            {/* Chic Thin Line Under Headlines */}
+
+            {/* Modern Accent Line */}
             <div 
               key={`line-${currentVideo}`}
-              className="mx-auto mt-3 bg-lime-400 rounded-full"
+              className="mx-auto rounded-full"
               style={{
-                height: '1px',
-                width: '60px',
-                animation: 'chicLineGlow 3s ease-in-out infinite, smoothSlideIn 0.6s ease-out',
-                animationDelay: '0s, 0.3s',
-                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                height: '2px',
+                width: '50px',
+                animation: 'modernPulse 3s ease-in-out infinite, elegantFadeUp 1.5s ease-out 0.8s both',
               }}
             />
-            
-            {/* Floating music notes */}
-            <div className="absolute -top-4 -right-8 text-lime-400 opacity-70">
-              <span 
-                className="text-2xl inline-block"
-                style={{ animation: 'rhythmBounce 1.5s ease-in-out infinite' }}
-              >
-                ♪
-              </span>
-            </div>
-            <div className="absolute -top-2 -left-6 text-lime-400 opacity-50">
-              <span 
-                className="text-xl inline-block"
-                style={{ animation: 'rhythmBounce 1.8s ease-in-out infinite 0.5s' }}
-              >
-                ♫
-              </span>
-            </div>
-            <div className="absolute -bottom-3 left-1/4 text-lime-400 opacity-60">
-              <span 
-                className="text-lg inline-block"
-                style={{ animation: 'rhythmBounce 2.2s ease-in-out infinite 1s' }}
-              >
-                ♪
-              </span>
-            </div>
           </div>
 
          
@@ -323,8 +316,10 @@ const HeroSection = () => {
        
       </div>
       
-      {/* Seamless transition element */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-[#371990] z-5"></div>
+      {/* Perfect Seamless Transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#371990]"></div>
+      </div>
      
     </section>
   );
