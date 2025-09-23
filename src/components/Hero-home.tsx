@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/background/8.jpg";
 import React, { useState, useEffect } from "react";
-
+import logo from "@/assets/logo/logo_colored.png";
 
 // Import videos
 import video1 from "@/assets/videos/5.mp4";
@@ -14,6 +14,8 @@ const HeroSection = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [videosLoaded, setVideosLoaded] = useState<boolean[]>([false, false, false]);
   const [allVideosReady, setAllVideosReady] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [preloaderProgress, setPreloaderProgress] = useState(0);
   
   const videos = [video1, video2, video3];
   const headlines = ["EXPERIENCE", "VIBES", "LIVE THE BEAT"];
@@ -27,6 +29,21 @@ const HeroSection = () => {
     });
   };
 
+  // Preloader progress simulation
+  useEffect(() => {
+    const progressInterval = setInterval(() => {
+      setPreloaderProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          return 100;
+        }
+        return prev + 2; // Increment by 2% every 40ms (2 seconds total)
+      });
+    }, 40);
+
+    return () => clearInterval(progressInterval);
+  }, []);
+
   // Check if all videos are loaded
   useEffect(() => {
     if (videosLoaded.every(loaded => loaded)) {
@@ -34,16 +51,27 @@ const HeroSection = () => {
     }
   }, [videosLoaded]);
 
+  // Hide preloader after 2 seconds AND when all videos are ready
   useEffect(() => {
-    // Only start the interval when all videos are loaded to prevent lag
-    if (!allVideosReady) return;
+    if (allVideosReady && preloaderProgress >= 100) {
+      const hideTimer = setTimeout(() => {
+        setShowPreloader(false);
+      }, 500); // Small delay for smooth transition
+
+      return () => clearTimeout(hideTimer);
+    }
+  }, [allVideosReady, preloaderProgress]);
+
+  useEffect(() => {
+    // Only start the interval when preloader is hidden and videos are ready
+    if (showPreloader || !allVideosReady) return;
     
     const interval = setInterval(() => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
     }, 10000); // Change video every 10 seconds
 
     return () => clearInterval(interval);
-  }, [videos.length, allVideosReady]);
+  }, [videos.length, allVideosReady, showPreloader]);
 
   useEffect(() => {
     // Inject elegant and creative animations
@@ -169,7 +197,52 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 sm:pt-12 pb-0" style={{ background: '#371990' }}>
+    <>
+      {/* Logo Preloader */}
+      {showPreloader && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: '#371990' }}>
+          <div className="text-center animate-pulse">
+            {/* Same Logo as Header */}
+            <div className="flex items-center justify-center space-x-2 select-none">
+              <img src={logo} alt="Tali Logo" className="h-16 w-auto md:h-20" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+              <span style={{ position: 'relative', display: 'inline-block' }}>
+                <span
+                  style={{
+                    color: '#ffffffff',
+                    fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
+                    fontWeight: 900,
+                    fontSize: '3.5rem',
+                    letterSpacing: '-0.04em',
+                    lineHeight: 1,
+                    marginRight: '0.03em',
+                    display: 'inline-block',
+                    verticalAlign: 'middle',
+                    textTransform: 'lowercase',
+                  }}
+                >
+                  tali
+                </span>
+                <span
+                  style={{
+                    position: 'absolute',
+                    paddingRight: "7rem",
+                    fontSize: '0.7rem',
+                    color: '#ffffffff',
+                    fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
+                    fontWeight: 400,
+                    opacity: 0.85,
+                    paddingTop: '3em'
+                  }}
+                >
+                  ®
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section id="home" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 sm:pt-12 pb-0" style={{ background: '#371990' }}>
       {/* Video Background Banner */}
       <div className="absolute inset-0 z-0">
         {videos.map((video, index) => (
@@ -322,6 +395,7 @@ const HeroSection = () => {
       </div>
      
     </section>
+    </>
   );
 };
 
