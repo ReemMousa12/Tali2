@@ -21,7 +21,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 select-none mb-4">
-              <img src={logo} alt="Tali Logo" className="h-10 w-auto" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+              <img src={logo} alt="Tali Logo" className="h-10 w-auto pb-1.5" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
               <span style={{ position: 'relative', display: 'inline-block' }}>
                 <span
                   style={{
@@ -31,7 +31,7 @@ const Footer = () => {
                     fontSize: '2.2rem',
                     letterSpacing: '-0.04em',
                     lineHeight: 1,
-                    marginRight: '0.03em',
+                    marginRight: '0.04em',
                     display: 'inline-block',
                     verticalAlign: 'middle',
                     textTransform: 'lowercase',
@@ -49,7 +49,7 @@ const Footer = () => {
                 fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
                 fontWeight: 400,
                 opacity: 0.85,
-                paddingTop: '3em'
+                paddingTop: '2.8em'
               }}
                 >
                   ®

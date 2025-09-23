@@ -24,7 +24,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2 select-none">
-          <img src={logo} alt="Tali Logo" className="h-10 w-auto " style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+          <img src={logo} alt="Tali Logo" className="h-10 w-auto pb-1.5" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
           <span style={{ position: 'relative', display: 'inline-block' }}>
             <span
               style={{
@@ -53,7 +53,7 @@ const Header = () => {
                 fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif',
                 fontWeight: 400,
                 opacity: 0.85,
-                paddingTop: '3em'
+                paddingTop: '2.8em'
               }}
             >
               ®
@@ -86,9 +86,9 @@ const Header = () => {
             {/* Logo and Close at the top */}
             <div className="flex items-center justify-center relative px-8 pt-8 pb-4 select-none">
               <div className="flex-1 flex justify-center">
-                <img src={logo} alt="Tali Logo" className="h-10 w-auto" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+                <img src={logo} alt="Tali Logo" className="h-10 w-auto pb-1.5" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
                 <span style={{ color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '-0.04em', lineHeight: 1, display: 'inline-block', verticalAlign: 'middle', textTransform: 'lowercase', marginLeft: 8 }}>tali</span>
-                <span style={{ fontSize: '0.5rem', color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 400, opacity: 0.85, marginLeft: 2, paddingTop: '3em' }}>®</span>
+                <span style={{ fontSize: '0.5rem', color: '#fff', fontFamily: 'Montserrat, Poppins, Inter, Arial, sans-serif', fontWeight: 400, opacity: 0.85, marginLeft: 2, paddingTop: '2.8em' }}>®</span>
               </div>
               <button className="absolute right-0 top-1/2 -translate-y-1/2 text-3xl text-tali-lime px-2" onClick={() => setMenuOpen(false)} aria-label="Close menu">×</button>
             </div>
