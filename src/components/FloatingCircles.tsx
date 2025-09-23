@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 const circleColors = [
   'bg-lime-400/40',
@@ -25,6 +25,31 @@ const floatingKeyframes = `
 }`;
 
 const FloatingCircles = ({ className = "z-10", numberOfCircles = 12 }) => {
+  // Memoize circle configurations to prevent re-generation on re-renders
+  const circleConfigs = useMemo(() => {
+    return Array.from({ length: numberOfCircles }).map((_, i) => {
+      const size = getRandomInt(18, 36);
+      const columns = Math.ceil(Math.sqrt(numberOfCircles));
+      const rows = Math.ceil(numberOfCircles / columns);
+      const column = i % columns;
+      const row = Math.floor(i / columns);
+      const left = (column * (100 / columns)) + getRandomInt(2, (100 / columns) - 10); 
+      const top = (row * (100 / rows)) + getRandomInt(2, (100 / rows) - 10);
+      const color = circleColors[i % circleColors.length];
+      const duration = 2.5 + Math.random() * 2.5; // 2.5s to 5s
+      const delay = Math.random() * 2; // 0s to 2s
+      
+      return {
+        size,
+        left,
+        top,
+        color,
+        duration,
+        delay
+      };
+    });
+  }, [numberOfCircles]); // Only regenerate if numberOfCircles changes
+
   useEffect(() => {
     // Inject keyframes into the document head once
     if (!document.getElementById('floating-circles-keyframes')) {
@@ -37,37 +62,23 @@ const FloatingCircles = ({ className = "z-10", numberOfCircles = 12 }) => {
 
   return (
     <div className={`absolute inset-0 pointer-events-none ${className}`}>
-      {Array.from({ length: numberOfCircles }).map((_, i) => {
-        // Create a flexible grid pattern based on number of circles
-        const size = getRandomInt(18, 36);
-        const columns = Math.ceil(Math.sqrt(numberOfCircles)); // Dynamic columns based on number
-        const rows = Math.ceil(numberOfCircles / columns); // Dynamic rows
-        const column = i % columns;
-        const row = Math.floor(i / columns);
-        // Add slight randomness within each grid cell
-        const left = (column * (100 / columns)) + getRandomInt(2, (100 / columns) - 10); 
-        const top = (row * (100 / rows)) + getRandomInt(2, (100 / rows) - 10);
-        const color = circleColors[i % circleColors.length];
-        const duration = 2.5 + Math.random() * 2.5; // 2.5s to 5s
-        const delay = Math.random() * 2; // 0s to 2s
-        return (
-          <div
-            key={i}
-            className={`absolute rounded-full border border-white/30 shadow-lg ${color}`}
-            style={{
-              width: size,
-              height: size,
-              left: `${left}%`,
-              top: `${top}%`,
-              opacity: 0.85,
-              boxShadow: '0 0 10px 2px rgba(255,255,255,0.35), inset 0 0 6px rgba(255,255,255,0.3)',
-              filter: 'brightness(1.2)',
-              backgroundBlendMode: 'normal',
-              animation: `floatY ${duration}s ease-in-out ${delay}s infinite`,
-            }}
-          />
-        );
-      })}
+      {circleConfigs.map((config, i) => (
+        <div
+          key={i}
+          className={`absolute rounded-full border border-white/30 shadow-lg ${config.color}`}
+          style={{
+            width: config.size,
+            height: config.size,
+            left: `${config.left}%`,
+            top: `${config.top}%`,
+            opacity: 0.85,
+            boxShadow: '0 0 10px 2px rgba(255,255,255,0.35), inset 0 0 6px rgba(255,255,255,0.3)',
+            filter: 'brightness(1.2)',
+            backgroundBlendMode: 'normal',
+            animation: `floatY ${config.duration}s ease-in-out ${config.delay}s infinite`,
+          }}
+        />
+      ))}
     </div>
   );
 };

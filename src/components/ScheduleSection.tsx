@@ -392,7 +392,7 @@ const ScheduleSection = () => {
         </div>
         {/* Floating Circles Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <FloatingCircles numberOfCircles={15} />
+        <FloatingCircles numberOfCircles={12} />
       </div>
         {/* Month Navigation */}
         <div className="flex justify-center mb-10 sm:mb-16">
