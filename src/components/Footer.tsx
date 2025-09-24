@@ -97,7 +97,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 text-center flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-tali-text-secondary">
-            © 2025 Tali Moments. All rights reserved.
+            © 2025 Tali All rights reserved.
           </p>
           <div className="flex items-center gap-4 justify-center">
             <a href="https://www.instagram.com/join_tali/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

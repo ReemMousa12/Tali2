@@ -116,8 +116,9 @@ const Header = () => {
         {/* Mobile menu button */}
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           className="md:hidden text-tali-text-primary"
+          style={{ fontSize: '1.5rem', lineHeight: 1 }}
           onClick={() => setMenuOpen(true)}
           aria-label="Open menu"
         >
